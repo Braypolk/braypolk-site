@@ -6,16 +6,42 @@
   color: black;
 }
 
+.wrapper {
+  width: 75vw;
+  position: absolute;
+  right: 0;
+}
+
+.around {
+  margin: 0 90px 90px 90px;
+  position: relative;
+}
+
 .sidebar {
   width: 25vw;
   height: 100vh;
   background-color: rgb(74, 74, 74);
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: 8px;
+  position: fixed;
+  z-index: 10;
 }
 
 .picker {
   width: 100%;
   height: 80%;
   margin: 0;
+  z-index: 20;
+}
+
+.navList li {
+  padding: 30px 0px 30px 0px;
+}
+
+.navList li a{
+  padding: 30px 0px 30px 0px;
+  text-transform: uppercase;
 }
 
 .downloadSection {
@@ -23,8 +49,59 @@
   height: 20%;
 }
 
+
+/* Hero page */
+.heroPage {
+  height: 100vh;
+  position: relative;
+}
+
+.bigFirstName {
+  font-family: 'Nixie One', cursive;
+  font-size: 170px;
+  position: absolute;
+  z-index: 15;
+  white-space: nowrap;
+  /* -webkit-transform: rotate(90deg) translateX(28%) translateY(22vw); */
+  /* -ms-transform: rotate(90deg) translateX(28%) translateY(22vw);*/
+  /* transform: rotate(90deg) translateX(49%);  */
+  transform: rotate(90deg) translateX(49%) translateY(478.5%); 
+  /* color: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(255,255,0,1) 50%, rgba(255,255,0,1) 100%); */
+  background: linear-gradient(to top, #fff 40%, rgb(74, 74, 74) 40%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* .bigLastName {
+  font-family: 'Nixie One', cursive;
+  font-size: 100px;
+  position: absolute;
+  z-index: 15;
+  bottom: 20px;
+  transform: translateX(-19.5%) ;
+  letter-spacing: 4px;
+  background: linear-gradient(to right, #fff 47px, rgb(74, 74, 74) 47px);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
+
+.about {
+  display: flex;
+}
+
+.spaceLeft {
+  margin-left: 30px ;
+}
+.spaceRight {
+  margin-right: 30px ;
+}
+
+/* Shared */
+
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+/* change pagewith 1025 */
