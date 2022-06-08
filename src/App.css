@@ -2,14 +2,24 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
-  list-style-type: none;
-  color: black;
+list-style-type: none;
+  color: #af877e;
+}
+
+h1 {
+  color: #a7c7f5;
+  font-weight: 400;
+  font-size: 58px;
+}
+h2 {
+  color: #7a91b1;
 }
 
 .wrapper {
-  width: 75vw;
+  width: calc(100% - 255px);
   position: absolute;
   right: 0;
+  background-color: #010101;
 }
 
 .around {
@@ -18,9 +28,9 @@
 }
 
 .sidebar {
-  width: 25vw;
+  width: 255px;
   height: 100vh;
-  background-color: rgb(74, 74, 74);
+  background-color: #40312d;
   font-weight: bold;
   font-size: 15px;
   letter-spacing: 8px;
@@ -42,6 +52,17 @@
 .navList li a{
   padding: 30px 0px 30px 0px;
   text-transform: uppercase;
+  background-image: linear-gradient(#d99a5a, #d99a5a);
+  background-size: 0% 0.1em;
+  background-position-y: 65%;
+  background-position-x: 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.2s ease-in-out;
+}
+
+.navList li a:hover{
+  background-size: 100% 0.1em;
+  background-position-x: 0%;
 }
 
 .downloadSection {
@@ -54,20 +75,26 @@
 .heroPage {
   height: 100vh;
   position: relative;
+  background-image: url("./assets/portrait.jpg");
+  background-position: top;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .bigFirstName {
   font-family: 'Nixie One', cursive;
-  font-size: 170px;
+  font-size: 150px;
   position: absolute;
   z-index: 15;
   white-space: nowrap;
   /* -webkit-transform: rotate(90deg) translateX(28%) translateY(22vw); */
   /* -ms-transform: rotate(90deg) translateX(28%) translateY(22vw);*/
   /* transform: rotate(90deg) translateX(49%);  */
-  transform: rotate(90deg) translateX(49%) translateY(478.5%); 
+  transform: rotate(90deg) translateX(49%) translateY(478%); 
   /* color: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(255,255,0,1) 50%, rgba(255,255,0,1) 100%); */
-  background: linear-gradient(to top, #fff 40%, rgb(74, 74, 74) 40%);
+  background: linear-gradient(to top, #010101 40%, #40312d 40%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -86,7 +113,13 @@
 } */
 
 .about {
+  padding-top: 50px;
   display: flex;
+  justify-content: center;
+}
+
+.about p {
+  max-width: 450px;
 }
 
 .spaceLeft {
@@ -96,12 +129,71 @@
   margin-right: 30px ;
 }
 
+/* Experience */
+.experience {
+  width: 80%;
+}
+
+.info {
+  flex-wrap: wrap;
+}
+
+.headingInfo {
+  width: 235px;
+}
+
+.box {
+  background-color: #40312d;
+  width: 380px;
+}
+
+.jobPoints {
+  padding: 31px 31px;
+}
+
+.jobPoints li {
+  margin-left: 18px;
+  margin-bottom: 30px;
+}
+
+.jobPoints li::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  transform: translate(-15px, 32px);
+  /* top: 0.75em; */
+  /* left: 30vw; */
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #a7c7f5;
+}
+
 /* Shared */
 
-.center {
+.allCenter {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.horizCenter {
+  margin: 0 auto;
+}
+
+.topPad {
+  padding-top: 50px;
+}
+.bottomPad {
+  padding-bottom: 40px;
+}
+
+.breath {
+  margin: 10px 0;
+}
+
+.bigBreath {
+  margin: 20px 0;
 }
 
 /* change pagewith 1025 */
