@@ -7,12 +7,17 @@ list-style-type: none;
 }
 
 h1 {
-  color: #a7c7f5;
+  color: #7a91b1;
   font-weight: 400;
   font-size: 58px;
 }
 h2 {
-  color: #7a91b1;
+  color: #a7c7f5;
+}
+
+h1, h2 {
+  text-shadow: -2px 3px 1px #25221f;
+
 }
 
 .wrapper {
@@ -97,6 +102,12 @@ h2 {
   background: linear-gradient(to top, #010101 40%, #40312d 40%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.someInfo {
+  position: absolute;
+  top: 30%;
+  right: 5%;
 }
 
 /* .bigLastName {
@@ -196,4 +207,4 @@ h2 {
   margin: 20px 0;
 }
 
-/* change pagewith 1025 */
+/* change pagewith 1100 */

@@ -29,10 +29,8 @@ function App() {
             BRAY POLKINGHORNE
           </div>
           <div className="someInfo">
-            Full-stack Developer Who Is Always Learning
-          </div>
-          <div className="action">
-            <h3>Learn more below</h3>
+            <p>Full-stack Developer, <br/>Always Learning</p>
+            <h3 className="action">Learn more below</h3>
           </div>
 
           {/* <div className="bigLastName">
