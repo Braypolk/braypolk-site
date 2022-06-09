@@ -81,7 +81,7 @@ function Experience() {
                                     <p className="title breath">{object.title}</p>
                                 </div>
                             </div>
-                            <div className="box breath">
+                            <div className="box breath rad">
                                 <ul className="jobPoints">
                                     {object.points.map(function (o, z) {
                                         return (

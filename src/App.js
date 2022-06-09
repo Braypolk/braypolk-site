@@ -23,19 +23,19 @@ function App() {
       headerTitle: "Experience",
       headerRef: experience,
       headerID: "experience"
+    },
+    {
+      headerTitle: "Contact",
+      headerRef: contact,
+      headerID: "contact"
     }
-    // {
-    //   headerTitle: "Section 3",
-    //   headerRef: contact,
-    //   headerID: "contact"
-    // }
   ];
 
   return (
     <div className="app">
       <header className="sidebar">
         <div className="allCenter picker">
-          <ScrollHighlightNabbar  navHeader={navHeader} />
+          <ScrollHighlightNabbar  contact={contact} navHeader={navHeader} />
           {/* <Scrollspy sectionRefs={sectionRefs}>
             <ul className="navList">
               <li><a href="">About</a></li>
@@ -80,8 +80,13 @@ function App() {
           </div>
 
           <div className="experience horizCenter topPad" ref={experience} id="experience">
-            <h1 className="bottomPad">Professional Experience</h1>
+              <h1 className="bottomPad textCenter">Professional Experience</h1>
             <Experience />
+          </div>
+
+          <div className="contact" ref={contact} id="contact">
+          <h1 className="bottomPad">Contact Me</h1>
+
           </div>
         </div>
       </div>

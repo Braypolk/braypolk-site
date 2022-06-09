@@ -20,11 +20,11 @@ const nearestIndex = (
     if (
       Math.abs(
         sectionPositionArray[startIndex].headerRef.current.offsetTop -
-          currentPosition
+        currentPosition
       ) <
       Math.abs(
         sectionPositionArray[endIndex].headerRef.current.offsetTop -
-          currentPosition
+        currentPosition
       )
     )
       return startIndex;
@@ -33,11 +33,11 @@ const nearestIndex = (
     var nextNearest = ~~((startIndex + endIndex) / 2);
     var a = Math.abs(
       sectionPositionArray[nextNearest].headerRef.current.offsetTop -
-        currentPosition
+      currentPosition
     );
     var b = Math.abs(
       sectionPositionArray[nextNearest + 1].headerRef.current.offsetTop -
-        currentPosition
+      currentPosition
     );
     if (a < b) {
       return nearestIndex(
@@ -76,18 +76,17 @@ export default function ScrollHighlightNabbar({ navHeader }) {
   }, []);
 
   return (
-    <div className="navContainer">
+    <ul className="navList">
       {navHeader.map((header, index) => (
-        <a
+        <li><a
           key={index + header.headerID}
-          className="navlink"
-          style={{ backgroundColor: activeIndex === index ? "red" : "green" }}
+          className={activeIndex === index ? "active rad" : null}
           href={`#${header.headerID}`}
         >
           {header.headerTitle}
-        </a>
+        </a></li>
       ))}
-    </div>
+    </ul>
   );
 }
 
