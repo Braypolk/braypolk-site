@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
-list-style-type: none;
+  list-style-type: none;
   color: #af877e;
 }
 
@@ -45,7 +45,7 @@ h1, h2 {
 
 .picker {
   width: 100%;
-  height: 80%;
+  height: 70%;
   margin: 0;
   z-index: 20;
 }
@@ -54,15 +54,21 @@ h1, h2 {
   padding: 30px 0px 30px 0px;
 }
 
-.navList li a{
+.navList li {
   padding: 30px 0px 30px 0px;
   text-transform: uppercase;
-  background-image: linear-gradient(#d99a5a, #d99a5a);
+  background-image: linear-gradient(#a7c7f5, #a7c7f5);
   background-size: 0% 0.1em;
   background-position-y: 65%;
   background-position-x: 100%;
   background-repeat: no-repeat;
   transition: background-size 0.2s ease-in-out;
+}
+
+.navList li a:active{
+  background-size: 100% 0.1em;
+  background-position-x: 0%;
+  background-color: red;
 }
 
 .navList li a:hover{
@@ -72,7 +78,15 @@ h1, h2 {
 
 .downloadSection {
   width: 100%;
-  height: 20%;
+  height: 30%;
+}
+
+.downloadSection p {
+  text-align: center;
+}
+
+.downloadIcon {
+  height: 20px;
 }
 
 
@@ -80,12 +94,21 @@ h1, h2 {
 .heroPage {
   height: 100vh;
   position: relative;
+}
+
+.image {
+  height: 100vh;
+  position: absolute;
+  top: 0;
   background-image: url("./assets/portrait.jpg");
   background-position: top;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .bigFirstName {
@@ -153,6 +176,20 @@ h1, h2 {
   width: 235px;
 }
 
+.backLetters {
+  font-weight: bold;
+  position: absolute;
+  z-index: -1;
+  width: 235px;
+  
+  /* color: rgb(27, 27, 27); */
+}
+
+.backLetters p{ 
+  color: #1f262f;
+  width: 100%;
+}
+
 .box {
   background-color: #40312d;
   width: 380px;
@@ -192,6 +229,12 @@ h1, h2 {
   margin: 0 auto;
 }
 
+.absoluteCenter {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .topPad {
   padding-top: 50px;
 }
@@ -203,8 +246,23 @@ h1, h2 {
   margin: 10px 0;
 }
 
+.breath2 {
+  margin: 20px 0;
+}
+
+.breath4 {
+  margin: 40px 0;
+}
+
 .bigBreath {
   margin: 20px 0;
 }
 
+.fullWidth {
+  width: 100%;
+}
+
+.above {
+  z-index: 99;
+}
 /* change pagewith 1100 */
