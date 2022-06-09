@@ -4,6 +4,7 @@ import ScrollHighlightNabbar from "./ScrollHighlightNavbar";
 import Experience from './Experience';
 import {DownloadButton, Linkedin, Github} from './assets/svg';
 
+import './Burger.css';
 import './App.css';
 
 // https://mycareer.qodeinteractive.com/maria/
@@ -33,6 +34,10 @@ function App() {
 
   return (
     <div className="app">
+      <div class="menu btn1" data-menu="1">
+        <div class="icon-left"></div>
+        <div class="icon-right"></div>
+      </div>
       <header className="sidebar">
         <div className="allCenter picker">
           <ScrollHighlightNabbar contact={contact} navHeader={navHeader} />
@@ -80,9 +85,9 @@ function App() {
           <div className="about" ref={contact} id="contact">
             <div className="allCenter spaceRight">
               <div className="fix">
-                <h1>Contact Me</h1>
+                <h1>Let's<br/>Connect</h1>
                 <div className="social horizCenter">
-                  <ul>
+                  <ul className="horizCenter">
                     <li>
                       <a href="https://www.linkedin.com/in/braypolk/">
                         {/* todo: fix this stuff <p>Linkedin</p> */}
@@ -107,6 +112,7 @@ function App() {
                 <input className="rad" type="text" id="email" name="email" placeholder="Email" />
                 <textarea className="rad" cols="40" rows="8" id="message" name="message" placeholder="Your Message..." />
               </form>
+              {/* todo still need a submit button and stuff */}
             </div>
           </div>
         </div>
