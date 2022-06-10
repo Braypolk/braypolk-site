@@ -45,6 +45,7 @@ h1, h2 {
   letter-spacing: 8px;
   position: fixed;
   z-index: 10;
+  transition: all 0.4s ease;
 }
 
 .picker {
@@ -67,6 +68,16 @@ h1, h2 {
   background-image: linear-gradient(#a7c7f5, #a7c7f5);
   background-size: 0% 0.1em;
   background-position-y: 65%;
+  background-position-x: 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.2s ease-in-out;
+}
+
+.social a {
+  text-transform: uppercase;
+  background-image: linear-gradient(#a7c7f5, #a7c7f5);
+  background-size: 0% 0.1em;
+  background-position-y: 100%;
   background-position-x: 100%;
   background-repeat: no-repeat;
   transition: background-size 0.2s ease-in-out;
@@ -134,24 +145,50 @@ h1, h2 {
   -webkit-text-fill-color: transparent;
 }
 
+/* todo fix for mobile */
 .someInfo {
   position: absolute;
-  top: 30%;
-  right: 5%;
+  top: 75%;
+  width: 390px;
+  /* margin: 0 auto; */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
 }
 
-/* .bigLastName {
-  font-family: 'Nixie One', cursive;
-  font-size: 100px;
+.someInfo > * {
+  color: #010101;
+  font-size: 1.2em;
+  width: 270px;
+  padding: 20px 0;
+}
+
+.fullstack {
   position: absolute;
-  z-index: 15;
-  bottom: 20px;
-  transform: translateX(-19.5%) ;
-  letter-spacing: 4px;
-  background: linear-gradient(to right, #fff 47px, rgb(74, 74, 74) 47px);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-} */
+  /* top: 45%;
+  left: 20%; */
+  background: rgb(31,38,47);
+  color: white;
+}
+
+.learning {
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 50px;
+  background-color: #7a91b1;
+
+}
+
+.action {
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 100px;
+  background-color: #a7c7f5;
+}
+
+.action {
+  font-weight: bold;
+}
 
 .about {
   padding-top: 50px;
@@ -189,7 +226,6 @@ h1, h2 {
 .backLetters {
   font-weight: bold;
   position: absolute;
-  z-index: -1;
   width: 235px;
   
   /* color: rgb(27, 27, 27); */
@@ -233,16 +269,29 @@ h1, h2 {
   width: 80%;
 }
 
+
+
 .social ul {
-  width: fit-content;
+  font-size: 25px;
 }
 
 .social li {
   margin: 20px 0;
 }
 
-.social li a {
-  padding: 20px 0;
+.social a {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.social a > * {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.social a svg {
+  padding-left: 20px;
+  transform: translateY(2px);
 }
 
 form {
@@ -266,6 +315,16 @@ input, textarea {
   font-size: 17px;
 }
 
+.submit {
+  background-color: #af877e;
+  color: #40312d;
+  transition: all 0.2s ease;
+}
+.submit:hover {
+  background-color: #40312d;
+  border: 1px solid #40312d;
+  color: #af877e;
+}
 /* Shared */
 
 .allCenter {
@@ -316,11 +375,15 @@ input, textarea {
 }
 
 .above {
-  z-index: 99;
+  z-index: 90;
 }
 
 .rad {
   border-radius: 2px;
+}
+
+.relative {
+  position: relative;
 }
 /* change pagewith 1100 */
 @media only screen and (max-width: 1100px) {
@@ -328,9 +391,20 @@ input, textarea {
   h1 {
     font-size: 40px;
   }
-  .bigFirstName, .sidebar {
-    display: none; 
+
+  .sidebar {
+    width: 70%;
+    transform: translateX(-100%);
   }
+  
+  .toggler:checked ~ .sidebar {
+    /* width: 50%; */
+    transform: translateX(0%);
+  }
+  .bigFirstName {
+    display: none;  
+  }
+
 
   .wrapper {
     width: 100%;
@@ -342,14 +416,6 @@ input, textarea {
 
   .about {
     margin: 0 30px;
-  }
-
-  /* todo: fix position */
-  .someInfo {
-    top: 75%;
-  }
-  .someInfo > * {
-    color: #010101;
   }
 
   .aboutText {

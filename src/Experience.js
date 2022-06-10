@@ -64,7 +64,7 @@ function Experience() {
                 return (
                     <div className="block">
                         <div className="info allCenter">
-                            <div className="headingInfo spaceRight above">
+                            <div className="headingInfo spaceRight">
                                 <div className="backLetters">
                                     {object.letters.map(function (letter, z) {
                                         if (height) {
@@ -75,7 +75,7 @@ function Experience() {
                                         }
                                     })}
                                 </div>
-                                <div className="above">
+                                <div className="relative">
                                     <h2 className="company bigBreath">{object.company}</h2>
                                     <p className="date breath">{object.date}</p>
                                     <p className="title breath">{object.title}</p>
