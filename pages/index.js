@@ -1,16 +1,10 @@
 import React, { useRef, useEffect } from "react";
-import ScrollHighlightNabbar from "./ScrollHighlightNavbar";
+import ScrollHighlightNabbar from "../utils/ScrollHighlightNavbar";
 
-import Experience from './Experience';
-import { DownloadButton, Linkedin, Github } from './assets/svg';
+import Experience from '../utils/Experience';
+import { DownloadButton, Linkedin, Github } from '../utils/svg.js';
 
-import './App.css';
-import './Burger.css';
-import resume from './assets/resume.pdf'
-
-// https://mycareer.qodeinteractive.com/maria/
-
-function App() {
+export default function Home() {
   const about = useRef(null);
   const experience = useRef(null);
   const contact = useRef(null);
@@ -32,7 +26,7 @@ function App() {
         </div>
         <div className="downloadSection allCenter">
           {/* todo fix file extension when downloaded */}
-          <a href={resume} download>
+          <a href="/assets/resume.pdf" download>
             <p>Download<br />Resume</p>
             <div className="fullWidth allCenter breath2"><DownloadButton /></div>
           </a>
@@ -111,5 +105,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
