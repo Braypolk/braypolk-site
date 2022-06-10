@@ -1,101 +1,60 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-// import "./ScrollHighlightNabbar.css";
+import React, { useRef, useEffect, useState } from "react";
 
-/**
- * @param {number} currentPosition Current Scroll position
- * @param {Array} sectionPositionArray Array of positions of all sections
- * @param {number} startIndex Start index of array
- * @param {number} endIndex End index of array
- * @return {number} Current Active index
- */
-const nearestIndex = (
-  currentPosition,
-  sectionPositionArray,
-  startIndex,
-  endIndex
-) => {
-  if (startIndex === endIndex) return startIndex;
-  else if (startIndex === endIndex - 1) {
-    if (
-      Math.abs(
-        sectionPositionArray[startIndex].headerRef.current.offsetTop -
-        currentPosition
-      ) <
-      Math.abs(
-        sectionPositionArray[endIndex].headerRef.current.offsetTop -
-        currentPosition
-      )
-    )
-      return startIndex;
-    else return endIndex;
-  } else {
-    var nextNearest = ~~((startIndex + endIndex) / 2);
-    var a = Math.abs(
-      sectionPositionArray[nextNearest].headerRef.current.offsetTop -
-      currentPosition
-    );
-    var b = Math.abs(
-      sectionPositionArray[nextNearest + 1].headerRef.current.offsetTop -
-      currentPosition
-    );
-    if (a < b) {
-      return nearestIndex(
-        currentPosition,
-        sectionPositionArray,
-        startIndex,
-        nextNearest
-      );
-    } else {
-      return nearestIndex(
-        currentPosition,
-        sectionPositionArray,
-        nextNearest,
-        endIndex
-      );
-    }
-  }
+const scrollTo = ele => {
+  ele.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
 };
 
-export default function ScrollHighlightNabbar({ navHeader }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+
+// todo: works decent, but I want it to be based on what section has the highest percentage on screen rather than a fixed point
+function ScrollHighlightNabbar({ sectionRefs }) {
+  const [visibleSection, setVisibleSection] = useState();
+
   useEffect(() => {
-    const handleScroll = (e) => {
-      var index = nearestIndex(
-        window.scrollY,
-        navHeader,
-        0,
-        navHeader.length - 1
-      );
-      setActiveIndex(index);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY ;
+      const selected = sectionRefs.find(({ section, ref }) => {
+        const ele = ref.current;
+        if (ele) {
+          const eleValues = ele.getBoundingClientRect();
+          return eleValues.top <= 0 && eleValues.bottom >= 0;
+        }
+      });
+      // console.log(selected)
+      if (selected && selected.section !== visibleSection) {
+        setVisibleSection(selected.section);
+      } else if (!selected && visibleSection) {
+        setVisibleSection(undefined);
+      }
     };
-    document.addEventListener("scroll", handleScroll);
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      document.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [visibleSection]);
 
   return (
-    <ul className="navList">
-      {navHeader.map((header, index) => (
-        <li><a
-          key={index + header.headerID}
-          className={activeIndex === index ? "active rad" : null}
-          href={`#${header.headerID}`}
-        >
-          {header.headerTitle}
-        </a></li>
+    <ul className="navList" >
+      {sectionRefs.map((header, index) => (
+        <li key={index}>
+          <a
+            className={visibleSection === header.section ? "selected" : ""}
+            onClick={() => {
+              scrollTo(header.ref.current);
+              let toggle = document.getElementById("toggler");
+              toggle.checked = !toggle.checked
+            }}
+          >
+            {header.section}
+          </a>
+        </li>
       ))}
     </ul>
   );
 }
 
-ScrollHighlightNabbar.propTypes = {
-  navHeader: PropTypes.arrayOf(
-    PropTypes.shape({
-      headerID: PropTypes.string,
-      headerRef: PropTypes.object.isRequired,
-      headerTitle: PropTypes.string.isRequired
-    })
-  ).isRequired
-};
+export default ScrollHighlightNabbar;

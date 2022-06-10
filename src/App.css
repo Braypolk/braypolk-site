@@ -61,6 +61,7 @@ h1, h2 {
 
 .navList li a {
   padding: 30px 0px 30px 6px;
+  cursor: pointer;
 }
 
 .navList li a, .social a{
@@ -83,7 +84,7 @@ h1, h2 {
   transition: background-size 0.2s ease-in-out;
 }
 
-.active {
+.selected {
   background-color: #af877e;
   color: #40312d;
   border-radius: 2px;
@@ -383,6 +384,10 @@ input, textarea {
 .relative {
   position: relative;
 }
+.fullHeight {
+  height: 100vh;
+}
+
 /* change pagewith 1100 */
 @media only screen and (max-width: 1100px) {
   /* change to slide over on click of hamburger */
@@ -395,7 +400,7 @@ input, textarea {
     transform: translateX(-100%);
   }
   
-  .toggler:checked ~ .sidebar {
+  #toggler:checked ~ .sidebar {
     /* width: 50%; */
     transform: translateX(0%);
   }

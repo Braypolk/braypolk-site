@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import ScrollHighlightNabbar from "./ScrollHighlightNavbar";
 
 import Experience from './Experience';
-import {DownloadButton, Linkedin, Github} from './assets/svg';
+import { DownloadButton, Linkedin, Github } from './assets/svg';
 
 import './App.css';
 import './Burger.css';
@@ -11,36 +11,24 @@ import resume from './assets/resume.pdf'
 // https://mycareer.qodeinteractive.com/maria/
 
 function App() {
-  const about = useRef();
-  const experience = useRef();
-  const contact = useRef();
+  const about = useRef(null);
+  const experience = useRef(null);
+  const contact = useRef(null);
 
-  const navHeader = [
-    {
-      headerTitle: "About",
-      headerRef: about,
-      headerID: "about"
-    },
-    {
-      headerTitle: "Experience",
-      headerRef: experience,
-      headerID: "experience"
-    },
-    {
-      headerTitle: "Contact",
-      headerRef: contact,
-      headerID: "contact"
-    }
+  const sectionRefs = [
+    { section: "About", ref: about },
+    { section: "Experience", ref: experience },
+    { section: "Contact", ref: contact }
   ];
 
   return (
     <div className="app">
       {/* todo stop scroll when mobile view sidebar is open */}
-      <input type="checkbox" className="toggler"/>
+      <input type="checkbox" id="toggler" />
       <div className="hamburger"><div></div></div>
       <header className="sidebar">
         <div className="allCenter picker">
-          <ScrollHighlightNabbar contact={contact} navHeader={navHeader} />
+          <ScrollHighlightNabbar sectionRefs={sectionRefs} />
         </div>
         <div className="downloadSection allCenter">
           {/* todo fix file extension when downloaded */}
@@ -67,8 +55,8 @@ function App() {
               Polkinghorne
             </div> */}
         </div>
-        <div className="around topPad" id="about">
-          <div className="about topPad bottomPad" ref={about}>
+        <div className="around topPad" >
+          <div className="about topPad bottomPad" id="About" ref={about}>
             <h1 className="allCenter">About Me</h1>
             {/* 
               crypto
@@ -80,29 +68,28 @@ function App() {
             <p className="aboutText spaceLeft">Technology, art, and the outdoors are things I love. Technology and art have a relationship of being opposite yet connected. During college, this opposition morphed into a compatibility that I'm so fortunate I found. I studied computer science and minored in photography at Montana State University. What a beautiful state! This satisfied the three things I mentioned earlier and gave me insight to the differences and similarities of engineers and artists. </p>
           </div>
 
-          <div className="experience horizCenter topPad" ref={experience} id="experience">
+          <div className="experience horizCenter topPad" ref={experience} id="Experience">
             <h1 className="bottomPad textCenter">Professional Experience</h1>
             <Experience />
           </div>
-
-          <div className="about" ref={contact} id="contact">
+          <div className="about" ref={contact} id="Contact">
             <div className="allCenter spaceRight">
               <div className="fix">
-                <h1>Let's<br/>Connect</h1>
+                <h1>Let's<br />Connect</h1>
                 <div className="social horizCenter">
                   <ul className="horizCenter">
                     <li>
                       <a href="https://www.linkedin.com/in/braypolk/">
                         {/* todo: fix this stuff <p>Linkedin</p> */}
                         <p>Linkedin</p>
-                        <Linkedin/>
+                        <Linkedin />
                       </a>
                     </li>
                     <li>
                       <a href="https://github.com/Braypolk">
                         {/* todo: fix this stuff <p>Github</p> */}
                         <p>Github</p>
-                        <Github/>
+                        <Github />
                       </a>
                     </li>
                   </ul>

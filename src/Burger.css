@@ -1,4 +1,4 @@
-.toggler{
+#toggler{
     /* ALWAYS KEEPING THE TOGGLER OR THE CHECKBOX ON TOP OF EVERYTHING :  */
       z-index:99;
       margin: 0;
@@ -60,11 +60,11 @@
   
   /* IF THE TOGGLER IS IN ITS CHECKED STATE, THEN SETTING THE BACKGROUND OF THE MIDDLE LAYER TO COMPLETE BLACK AND OPAQUE :  */
   
-  .toggler:checked + .hamburger > div{
+  #toggler:checked + .hamburger > div{
       background: #40312d;
   }
   
-  .toggler:checked + .hamburger > div::before{
+  #toggler:checked + .hamburger > div::before{
       top: 0;
       transform: rotate(45deg);
       background: black;
@@ -72,7 +72,7 @@
   
   /* AND ROTATING THE TOP AND BOTTOM LINES :  */
   
-  .toggler:checked + .hamburger > div::after{
+  #toggler:checked + .hamburger > div::after{
       top: 0;
       transform: rotate(135deg);
       background: black;
