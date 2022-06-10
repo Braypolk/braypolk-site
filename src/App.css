@@ -125,7 +125,7 @@ h1, h2 {
   -o-background-size: cover;
   background-size: cover;
   width: 100%;
-  max-width: 1300px;
+  max-width: 1050px;
   margin: 0 auto;
 }
 
@@ -148,9 +148,9 @@ h1, h2 {
 /* todo fix for mobile */
 .someInfo {
   position: absolute;
-  top: 75%;
-  width: 390px;
-  /* margin: 0 auto; */
+  bottom: 5%;
+  width: 370px;
+  height: 165px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -165,8 +165,6 @@ h1, h2 {
 
 .fullstack {
   position: absolute;
-  /* top: 45%;
-  left: 20%; */
   background: rgb(31,38,47);
   color: white;
 }
