@@ -297,12 +297,12 @@ form {
   width: 100%;
 }
 
-input, textarea {
+input, textarea, button {
   /* 100% - side padding - margin - border */
   width: calc(100% - (27px * 2) - (24px * 2) - (1px * 2));
 }
 
-input, textarea {
+input, textarea, button {
   display: block;
   padding: 17px 27px;
   margin: 24px;

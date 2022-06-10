@@ -15,6 +15,20 @@ export default function Home() {
     { section: "Contact", ref: contact }
   ];
 
+  async function handleOnSubmit(e) {
+    e.preventDefault(e);
+    const formData = {};
+    Array.from(e.currentTarget.elements).forEach(field => {
+      if (!field.name ) return;
+      formData[field.name] = field.value;
+    });
+
+    fetch('api/mail', {
+      method: 'post',
+      body: JSON.stringify(formData)
+    })
+  }
+
   return (
     <div className="app">
       {/* todo stop scroll when mobile view sidebar is open */}
@@ -90,12 +104,12 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="form">
-              <form className="bottomPad">
+            <div className="form" >
+              <form className="bottomPad" method="post" onSubmit={handleOnSubmit}>
                 <input className="rad" type="text" id="name" name="name" placeholder="Name" />
-                <input className="rad" type="text" id="email" name="email" placeholder="Email" />
+                <input className="rad" type="email" id="email" name="email" placeholder="Email" />
                 <textarea className="rad" cols="40" rows="8" id="message" name="message" placeholder="Your Message..." />
-                <input className="rad horizCenter submit" type="submit" value="Submit" />
+                <button className="rad horizCenter submit" type="submit">Submit</button>
               </form>
               {/* todo still need a submit button and stuff */}
             </div>

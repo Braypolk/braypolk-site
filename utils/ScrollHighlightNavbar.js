@@ -7,6 +7,7 @@ const scrollTo = ele => {
   });
 };
 
+// https://codesandbox.io/s/github/codedailyio/StickyHeaderSections?file=/src/App.css
 
 // todo: works decent, but I want it to be based on what section has the highest percentage on screen rather than a fixed point
 function ScrollHighlightNabbar({ sectionRefs }) {
