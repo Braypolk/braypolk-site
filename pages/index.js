@@ -31,22 +31,32 @@ export default function Home() {
       body: JSON.stringify(formData)
     }).then((res) => {
       res.json().then((jsonRes) => {
+        // success, remove form and show a message
         if(res.status === 200){
-
           var form = document.getElementById("form");
           form.reset();
           form.style.display = "none";
           document.getElementById("success").style.visibility = "block";
         }
+        // error, alert and keep form data
         else if (res.status === 422) {
           alert(`ERROR: ${jsonRes.message}\nPlease try again`)
         }
       });
     })
+  }
 
+  const boxChange = e => {
+    const otherside = document.getElementById("otherSidebar");
+    const bigName = document.getElementById("bigFirstName");
+    if (e.target.checked) {
+      otherside.style.transform = "translateX(" + -30 + "vw)";
+      bigName.style.transform = "translateY(" + 0 + "vh";
+    } else {
+      otherside.style.transform = "translateX(" + 30 + "vw)";
+      bigName.style.transform = "translateY(" + -100 + "vh)";
 
-
-    // todo: on success show a messsage
+    }
   }
 
   return (
@@ -57,7 +67,7 @@ export default function Home() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       {/* todo stop scroll when mobile view sidebar is open */}
-      <input type="checkbox" id="toggler" />
+      <input type="checkbox" id="toggler" onChange={boxChange}/>
       <div className="hamburger"><div></div></div>
       <header className="sidebar">
         <div className="allCenter picker">
@@ -71,6 +81,8 @@ export default function Home() {
           </a>
         </div>
       </header>
+        <div id="bigFirstName">BRAY POLKINGHORNE</div>
+      <div id="otherSidebar"></div>
       <div className="wrapper">
         <div className="heroPage">
           <div className="image absoluteCenter">
@@ -84,10 +96,7 @@ export default function Home() {
               priority="true"
             />
           </div>
-          {/* todo: add name on left side for mobile view */}
-          <div className="bigFirstName">
-            BRAY POLKINGHORNE
-          </div>
+          {/* todo fix for mobile display: do a max width and then compress with smaller widths*/}
           <div className="someInfo">
             <p className="fullstack rad">Full-stack Developer</p>
             <p className="learning rad">Always Learning</p>
@@ -123,14 +132,12 @@ export default function Home() {
                   <ul className="horizCenter">
                     <li>
                       <a href="https://www.linkedin.com/in/braypolk/">
-                        {/* todo: fix this stuff <p>Linkedin</p> */}
                         <p>Linkedin</p>
                         <Linkedin />
                       </a>
                     </li>
                     <li>
                       <a href="https://github.com/Braypolk">
-                        {/* todo: fix this stuff <p>Github</p> */}
                         <p>Github</p>
                         <Github />
                       </a>
@@ -139,7 +146,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            {/* todo on submit clear form */}
             <div className="form" >
               <form id="form" className="bottomPad" method="post" onSubmit={handleOnSubmit}>
                 <input required className="rad" type="text" id="name" name="name" placeholder="Name" />
@@ -147,7 +153,6 @@ export default function Home() {
                 <textarea required className="rad" cols="40" rows="8" id="message" name="message" placeholder="Your Message..." />
                 <button className="rad horizCenter submit" type="submit">Submit</button>
               </form>
-              {/* todo still need a submit button and stuff */}
             <div id="success">
               <h1>Thank you</h1>
               <p>Your message has been submitted</p>

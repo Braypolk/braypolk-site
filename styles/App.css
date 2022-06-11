@@ -48,6 +48,18 @@ h1, h2 {
   transition: all 0.4s ease;
 }
 
+#otherSidebar {
+  background-color: #010101;
+  position: fixed;
+  display: none;
+  width: 30vw;
+  height: 100vh;
+  top: 0;
+  left: 100vw;
+  transition: all 0.8s cubic-bezier(.99,.01,.54,.93);
+  z-index: 10;
+}
+
 .picker {
   width: 100%;
   height: 70%;
@@ -130,23 +142,22 @@ h1, h2 {
   margin: 0 auto;
 }
 
-.bigFirstName {
+#bigFirstName {
   font-family: 'Nixie One', cursive;
   font-size: 150px;
   position: absolute;
   z-index: 15;
   white-space: nowrap;
-  /* -webkit-transform: rotate(90deg) translateX(28%) translateY(22vw); */
-  /* -ms-transform: rotate(90deg) translateX(28%) translateY(22vw);*/
-  /* transform: rotate(90deg) translateX(49%);  */
-  transform: rotate(90deg) translateX(49%) translateY(478%); 
-  /* color: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(255,255,0,1) 50%, rgba(255,255,0,1) 100%); */
-  background: linear-gradient(to top, #010101 40%, #40312d 40%);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  left: 186.5px;
+  top: 5px;
+  background: linear-gradient(to right, #010101 39.8%, #40312d 39.8%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  transition: all .6s ease;
 }
 
-/* todo fix for mobile */
 .someInfo {
   position: absolute;
   bottom: 5%;
@@ -335,6 +346,10 @@ input, textarea, button {
 }
 /* Shared */
 
+.hide {
+  display: none;
+}
+
 .allCenter {
   display: flex;
   justify-content: center;
@@ -409,8 +424,13 @@ input, textarea, button {
   }
 
   .sidebar {
-    width: 70%;
+    width: 70vw;
     transform: translateX(-100%);
+  }
+
+  #otherSidebar {
+    display: inline-block;
+    /* transform: translateX(30vw); */
   }
 
   #toggler, .hamburger {
@@ -421,8 +441,14 @@ input, textarea, button {
     /* width: 50%; */
     transform: translateX(0%);
   }
-  .bigFirstName {
-    display: none;  
+
+  #bigFirstName {
+    font-size: 58px;
+    left: calc( 70vw - 26px );
+    transform: translateY(-100vh);
+    background: linear-gradient(to right, #010101 39%, #40312d 39%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
 
