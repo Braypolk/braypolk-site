@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Head from 'next/head'
 import React, { useRef, useEffect } from "react";
 import ScrollHighlightNabbar from "../utils/ScrollHighlightNavbar";
 
@@ -21,22 +22,40 @@ export default function Home() {
     e.preventDefault(e);
     const formData = {};
     Array.from(e.currentTarget.elements).forEach(field => {
-      if (!field.name ) return;
+      if (!field.name) return;
       formData[field.name] = field.value;
     });
 
     fetch('api/mail', {
       method: 'post',
       body: JSON.stringify(formData)
+    }).then((res) => {
+      res.json().then((jsonRes) => {
+        if(res.status === 200){
+
+          var form = document.getElementById("form");
+          form.reset();
+          form.style.display = "none";
+          document.getElementById("success").style.visibility = "block";
+        }
+        else if (res.status === 422) {
+          alert(`ERROR: ${jsonRes.message}\nPlease try again`)
+        }
+      });
     })
 
-    var form = document.getElementById("form");
-    form.reset();
+
+
     // todo: on success show a messsage
   }
 
   return (
+    
     <div className="app">
+      <Head>
+        <title>BrayPolk</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       {/* todo stop scroll when mobile view sidebar is open */}
       <input type="checkbox" id="toggler" />
       <div className="hamburger"><div></div></div>
@@ -70,9 +89,9 @@ export default function Home() {
             BRAY POLKINGHORNE
           </div>
           <div className="someInfo">
-              <p className="fullstack rad">Full-stack Developer</p>
-              <p className="learning rad">Always Learning</p>
-              <p className="action rad">Learn more below</p>
+            <p className="fullstack rad">Full-stack Developer</p>
+            <p className="learning rad">Always Learning</p>
+            <p className="action rad">Learn more below</p>
           </div>
 
           {/* <div className="bigLastName">
@@ -123,12 +142,16 @@ export default function Home() {
             {/* todo on submit clear form */}
             <div className="form" >
               <form id="form" className="bottomPad" method="post" onSubmit={handleOnSubmit}>
-                <input className="rad" type="text" id="name" name="name" placeholder="Name" />
-                <input className="rad" type="email" id="email" name="email" placeholder="Email" />
-                <textarea className="rad" cols="40" rows="8" id="message" name="message" placeholder="Your Message..." />
+                <input required className="rad" type="text" id="name" name="name" placeholder="Name" />
+                <input required className="rad" type="email" id="email" name="email" placeholder="Email" />
+                <textarea required className="rad" cols="40" rows="8" id="message" name="message" placeholder="Your Message..." />
                 <button className="rad horizCenter submit" type="submit">Submit</button>
               </form>
               {/* todo still need a submit button and stuff */}
+            <div id="success">
+              <h1>Thank you</h1>
+              <p>Your message has been submitted</p>
+            </div>
             </div>
           </div>
         </div>
