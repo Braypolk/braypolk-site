@@ -346,6 +346,11 @@ input, textarea, button {
 }
 /* Shared */
 
+.stop-scrolling {
+  height: 100%;  
+  overflow: hidden;
+}
+
 .hide {
   display: none;
 }
@@ -443,6 +448,7 @@ input, textarea, button {
   }
 
   #bigFirstName {
+    position: fixed;
     font-size: 58px;
     left: calc( 70vw - 26px );
     transform: translateY(-100vh);

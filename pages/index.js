@@ -32,7 +32,7 @@ export default function Home() {
     }).then((res) => {
       res.json().then((jsonRes) => {
         // success, remove form and show a message
-        if(res.status === 200){
+        if (res.status === 200) {
           var form = document.getElementById("form");
           form.reset();
           form.style.display = "none";
@@ -52,15 +52,15 @@ export default function Home() {
     if (e.target.checked) {
       otherside.style.transform = "translateX(" + -30 + "vw)";
       bigName.style.transform = "translateY(" + 0 + "vh";
+      document.body.classList.add("stop-scrolling");
     } else {
       otherside.style.transform = "translateX(" + 30 + "vw)";
       bigName.style.transform = "translateY(" + -100 + "vh)";
-
+      document.body.classList.remove("stop-scrolling");
     }
   }
 
   return (
-    
     <div className="app">
       <Head>
         <title>BrayPolk</title>
@@ -81,7 +81,8 @@ export default function Home() {
           </a>
         </div>
       </header>
-        <div id="bigFirstName">BRAY POLKINGHORNE</div>
+      {/* todo: bug when switching from small to large view */}
+      <div id="bigFirstName">BRAY POLKINGHORNE</div>
       <div id="otherSidebar"></div>
       <div className="wrapper">
         <div className="heroPage">
@@ -153,10 +154,10 @@ export default function Home() {
                 <textarea required className="rad" cols="40" rows="8" id="message" name="message" placeholder="Your Message..." />
                 <button className="rad horizCenter submit" type="submit">Submit</button>
               </form>
-            <div id="success">
-              <h1>Thank you</h1>
-              <p>Your message has been submitted</p>
-            </div>
+              <div id="success">
+                <h1>Thank you</h1>
+                <p>Your message has been submitted</p>
+              </div>
             </div>
           </div>
         </div>
