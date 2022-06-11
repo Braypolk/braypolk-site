@@ -17,7 +17,7 @@ export default function handler(req, res) {
   const data = {
     to: 'braypolk@gmail.com',
     subject: 'New Message From BrayPolk Site',
-    from: 'hello@bray.dev',
+    from: 'brayPolkSite@bray.dev',
     text: message,
     html: message.replace(/\r\n/g, '<br/>')
   };
