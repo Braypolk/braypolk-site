@@ -4,7 +4,7 @@ import ScrollHighlightNabbar from "../utils/ScrollHighlightNavbar";
 
 import Experience from '../utils/Experience';
 import { DownloadButton, Linkedin, Github } from '../utils/svg.js';
-// import portrait from "/assets/portrait.jpg";
+import portrait from "../public/assets/portrait.jpg";
 
 export default function Home() {
   const about = useRef(null);
@@ -45,7 +45,7 @@ export default function Home() {
           <ScrollHighlightNabbar sectionRefs={sectionRefs} />
         </div>
         <div className="downloadSection allCenter">
-          {/* todo fix file extension when downloaded */}
+          {/* todo have file be called only when downloaded */}
           <a href="/assets/resume.pdf" download>
             <p>Download<br />Resume</p>
             <div className="fullWidth allCenter breath2"><DownloadButton /></div>
@@ -57,10 +57,12 @@ export default function Home() {
           <div className="image absoluteCenter">
             <Image
               alt="Mountains"
-              src="/assets/portrait.jpg"
+              src={portrait}
               layout="fill"
               objectFit="cover"
               objectPosition="top"
+              placeholder="blur"
+              priority="true"
             />
           </div>
           {/* todo: add name on left side for mobile view */}
