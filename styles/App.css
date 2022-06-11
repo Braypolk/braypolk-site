@@ -119,12 +119,12 @@ h1, h2 {
   height: 100vh;
   position: absolute;
   top: 0;
-  background-image: url("/assets/portrait.jpg");
+  /* background-image: url("/assets/portrait.jpg");
   background-position: top;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover; */
   width: 100%;
   max-width: 1050px;
   margin: 0 auto;

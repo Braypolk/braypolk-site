@@ -1,8 +1,10 @@
+import Image from 'next/image';
 import React, { useRef, useEffect } from "react";
 import ScrollHighlightNabbar from "../utils/ScrollHighlightNavbar";
 
 import Experience from '../utils/Experience';
 import { DownloadButton, Linkedin, Github } from '../utils/svg.js';
+// import portrait from "/assets/portrait.jpg";
 
 export default function Home() {
   const about = useRef(null);
@@ -52,7 +54,15 @@ export default function Home() {
       </header>
       <div className="wrapper">
         <div className="heroPage">
-          <div className="image absoluteCenter"></div>
+          <div className="image absoluteCenter">
+            <Image
+              alt="Mountains"
+              src="/assets/portrait.jpg"
+              layout="fill"
+              objectFit="cover"
+              objectPosition="top"
+            />
+          </div>
           {/* todo: add name on left side for mobile view */}
           <div className="bigFirstName">
             BRAY POLKINGHORNE
