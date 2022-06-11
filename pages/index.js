@@ -27,6 +27,10 @@ export default function Home() {
       method: 'post',
       body: JSON.stringify(formData)
     })
+
+    var form = document.getElementById("form");
+    form.reset();
+    // todo: on success show a messsage
   }
 
   return (
@@ -54,9 +58,9 @@ export default function Home() {
             BRAY POLKINGHORNE
           </div>
           <div className="someInfo">
-            <p className="fullstack rad">Full-stack Developer</p>
-            <p className="learning rad">Always Learning</p>
-            <p className="action rad">Learn more below</p>
+              <p className="fullstack rad">Full-stack Developer</p>
+              <p className="learning rad">Always Learning</p>
+              <p className="action rad">Learn more below</p>
           </div>
 
           {/* <div className="bigLastName">
@@ -104,8 +108,9 @@ export default function Home() {
                 </div>
               </div>
             </div>
+            {/* todo on submit clear form */}
             <div className="form" >
-              <form className="bottomPad" method="post" onSubmit={handleOnSubmit}>
+              <form id="form" className="bottomPad" method="post" onSubmit={handleOnSubmit}>
                 <input className="rad" type="text" id="name" name="name" placeholder="Name" />
                 <input className="rad" type="email" id="email" name="email" placeholder="Email" />
                 <textarea className="rad" cols="40" rows="8" id="message" name="message" placeholder="Your Message..." />

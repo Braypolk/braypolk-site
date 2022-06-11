@@ -22,6 +22,5 @@ export default function handler(req, res) {
     html: message.replace(/\r\n/g, '<br/>')
   };
   mail.send(data);
-  console.log(data)
-  res.status(200).json({ name: 'John Doe' })
+  res.status(200).json(data)
 }

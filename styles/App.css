@@ -393,7 +393,7 @@ input, textarea, button {
 }
 
 /* change pagewith 1100 */
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1000px) {
   /* change to slide over on click of hamburger */
   h1 {
     font-size: 40px;
@@ -440,5 +440,11 @@ input, textarea, button {
 
   .jobPoints {
     padding: 31px 12px;
+  }
+
+  .someInfo > * {
+    width: 240px;
+    padding: 20px 0;
+    transform: translateX(6.5%);
   }
 }
