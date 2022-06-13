@@ -141,7 +141,7 @@ h1, h2 {
   max-width: 1050px;
   margin: 0 auto;
 }
-
+/* text-size-adjust */
 #bigFirstName {
   font-family: 'Nixie One', cursive;
   font-size: 150px;
@@ -149,12 +149,17 @@ h1, h2 {
   z-index: 15;
   white-space: nowrap;
   writing-mode: vertical-rl;
-  text-orientation: mixed;
+  -webkit-text-orientation: mixed;
   left: 186.5px;
   top: 5px;
   background: linear-gradient(to right, #010101 39.8%, #40312d 39.8%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  -webkit-transition:all .6s ease;
+  -moz-transition:all .6s ease;
+  -ms-transition:all .6s ease;
+  -o-transition:all .6s ease;
   transition: all .6s ease;
 }
 

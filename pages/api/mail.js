@@ -6,7 +6,7 @@ const mail = require('@sendgrid/mail')
 
 function ValidateEmail(mail) 
 {
- if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,7})+$/.test(mail))
   {
     return (true)
   }
@@ -21,16 +21,14 @@ export default function handler(req, res) {
   for (const key in body) {
     console.log(key, body[key])
     if (body[key] === "" || !body[key]) {
-      res.status(422).json({message:'Form value is empty'})
-      return;
+      return res.status(422).json({message:'Form value is empty'})
     }
   };
 
   // check if email is valid
   let emailStatus = ValidateEmail(body.email)
   if (!emailStatus) {
-    res.status(422).json({message:'You have entered an invalid email address!'})
-    return;
+    return res.status(422).json({message:'You have entered an invalid email address!'})
   }
 
   const message = `
@@ -46,6 +44,17 @@ export default function handler(req, res) {
     text: message,
     html: message.replace(/\r\n/g, '<br/>')
   };
-  mail.send(data);
-  res.status(200).json({message:'Looks good'})
+  
+  (async () => {
+    try {
+      await mail.send(data);
+      return res.status(200).json({message:'Looks good'})
+    } catch (error) {
+      console.error(error);
+      if (error.response) {
+        console.error(error.response.body)
+        return res.status(422).json({message:'Something went wrong'})
+      }
+    }
+  })();
 }
