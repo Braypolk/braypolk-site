@@ -33,10 +33,11 @@ export default function Home() {
       res.json().then((jsonRes) => {
         // success, remove form and show a message
         if (res.status === 200) {
+          console.log("success");
           var form = document.getElementById("form");
           form.reset();
           form.style.display = "none";
-          document.getElementById("success").style.visibility = "block";
+          document.getElementById("success").style.display = "block";
         }
         // error, alert and keep form data
         else if (res.status === 422) {
@@ -147,7 +148,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="form" >
+            <div className="form">
               <form id="form" className="bottomPad" method="post" onSubmit={handleOnSubmit}>
                 <input required className="rad" type="text" id="name" name="name" placeholder="Name" />
                 <input required className="rad" type="email" id="email" name="email" placeholder="Email" />
@@ -159,6 +160,7 @@ export default function Home() {
                 <p>Your message has been submitted</p>
               </div>
             </div>
+            <div className="bottom"></div>
           </div>
         </div>
       </div>

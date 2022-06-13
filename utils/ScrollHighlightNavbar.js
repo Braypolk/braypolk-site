@@ -20,7 +20,7 @@ function ScrollHighlightNabbar({ sectionRefs }) {
         const ele = ref.current;
         if (ele) {
           const eleValues = ele.getBoundingClientRect();
-          return eleValues.top <= 0 && eleValues.bottom >= 0;
+          return eleValues.top <= 100 && eleValues.bottom >= 100;
         }
       });
       // console.log(selected)

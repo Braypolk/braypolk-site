@@ -284,7 +284,9 @@ h1, h2 {
   width: 80%;
 }
 
-
+#Contact {
+  align-items: center;
+}
 
 .social ul {
   font-size: 25px;
@@ -343,6 +345,11 @@ input, textarea, button {
 
 #success {
   display: none;
+}
+
+.bottom {
+  width: 100vh;
+  height: 300px;
 }
 /* Shared */
 

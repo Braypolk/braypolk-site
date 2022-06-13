@@ -27,7 +27,7 @@ export default function handler(req, res) {
   };
 
   // check if email is valid
-  emailStatus = ValidateEmail(body.email)
+  let emailStatus = ValidateEmail(body.email)
   if (!emailStatus) {
     res.status(422).json({message:'You have entered an invalid email address!'})
     return;
