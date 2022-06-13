@@ -62,7 +62,7 @@ h1, h2 {
 
 .picker {
   width: 100%;
-  height: 70%;
+  height: 60%;
   margin: 0;
   z-index: 20;
 }
@@ -109,7 +109,7 @@ h1, h2 {
 
 .downloadSection {
   width: 100%;
-  height: 30%;
+  height: 40%;
 }
 
 .downloadSection p {
