@@ -243,6 +243,10 @@ h1, h2 {
   width: 235px;
 }
 
+.location{
+  font-weight: bold;
+}
+
 .backLetters {
   font-weight: bold;
   position: absolute;

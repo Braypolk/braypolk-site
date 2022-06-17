@@ -1,16 +1,20 @@
 const items = [
     {
         company: "Maven Wave",
+        location: "Chicago, IL",
         letters: ["MW"],
         date: "June 2021 - Present",
         title: "Analyst, DevOps",
         points: [
             "Worked with Capital One to re-platform infrastructure of acquired company. Ensuring security, stability, minimal down time, and compliance with organization",
-            "Major role in deployment and improvement of multi-tenant environments for Mayo Clinic. Requiring deep understanding of large scale terraform deployment, organizational policies, and the ability to pivot based on customer needs."
+            "Major role in deployment and improvement of multi-tenant environments for Mayo Clinic. Requiring deep understanding of large scale terraform deployment, organizational policies, and the ability to pivot based on customer needs.",
+            "Ignite program learning business and engineering. Result was a presentation of full-stack application. Some of the technology used to build this app included; GCP, terraform, kubernetes, nginx, react, BigQuery",
+            "Won internal competition of building a kubernetes operator. Before this I had very little knowledge of kubernetes, but quickly picked up the concepts."
         ]
     },
     {
         company: "Yellowstone Ecological Research Center",
+        location: "Bozeman, MT",
         letters: ["YE", "RC"],
         date: "September - May 2020",
         title: "Computer Science Intern, Senior Capstone Team",
@@ -21,6 +25,7 @@ const items = [
     },
     {
         company: "Zoot Enterprises",
+        location: "Bozeman, MT",
         letters: ["ZE"],
         date: "June - August 2020",
         title: "Computer Science Intern, Microservices Team",
@@ -32,6 +37,7 @@ const items = [
     },
     {
         company: "Nextworld",
+        location: "Denver, CO",
         letters: ["NW"],
         date: "May - July 2019",
         title: "Computer Science Intern, Integration & Implementation Team",
@@ -77,6 +83,7 @@ function Experience() {
                                 </div>
                                 <div className="relative">
                                     <h2 className="company bigBreath">{object.company}</h2>
+                                    <p className="location">{object.location}</p>
                                     <p className="date breath">{object.date}</p>
                                     <p className="title breath">{object.title}</p>
                                 </div>
