@@ -341,12 +341,12 @@ input, textarea, button {
   font-size: 17px;
 }
 
-.submit {
+#submit {
   background-color: #af877e;
   color: #40312d;
   transition: all 0.2s ease;
 }
-.submit:hover {
+#submit:hover {
   background-color: #40312d;
   border: 1px solid #40312d;
   color: #af877e;

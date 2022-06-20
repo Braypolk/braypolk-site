@@ -20,6 +20,7 @@ export default function Home() {
 
   async function handleOnSubmit(e) {
     e.preventDefault(e);
+    document.getElementById("submit").textContent = 'Submitting';
     const formData = {};
     Array.from(e.currentTarget.elements).forEach(field => {
       if (!field.name) return;
@@ -37,11 +38,13 @@ export default function Home() {
           var form = document.getElementById("form");
           form.reset();
           form.style.display = "none";
+          document.getElementById("submit").textContent = 'Submitted';
           document.getElementById("success").style.display = "block";
         }
         // error, alert and keep form data
         else if (res.status === 422) {
           alert(`ERROR: ${jsonRes.message}\nPlease try again`)
+          document.getElementById("submit").textContent = 'Submit';
         }
       });
     })
@@ -153,7 +156,7 @@ export default function Home() {
                 <input required className="rad" type="text" id="name" name="name" placeholder="Name" />
                 <input required className="rad" type="email" id="email" name="email" placeholder="Email" />
                 <textarea required className="rad" cols="40" rows="8" id="message" name="message" placeholder="Your Message..." />
-                <button className="rad horizCenter submit" type="submit">Submit</button>
+                <button className="rad horizCenter" id="submit" type="submit">Submit</button>
               </form>
               <div id="success">
                 <h1>Thank you</h1>
