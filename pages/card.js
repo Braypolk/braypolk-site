@@ -288,7 +288,7 @@ export default function Card() {
           <div className="actionsC">
             <div className="actionBtn">
               <a
-                href="tel:3038100756"
+                href="tel:0000000000" // change this to be real when some sort of security is in place
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Mobile"
@@ -373,7 +373,7 @@ export default function Card() {
           <div className="actionsC">
             <div className="actionBtn">
               <a
-                href="mailto:braypolk@gmail.com"
+                href="mailto:test@test.com" // change this to be real when some sort of security is in place
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Email"
