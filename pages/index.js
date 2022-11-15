@@ -92,7 +92,7 @@ export default function Home() {
         <div className="heroPage">
           <div className="image absoluteCenter">
             <Image
-              alt="Mountains"
+              alt="Professional portrait of Bray"
               src={portrait}
               layout="fill"
               objectFit="cover"
@@ -136,13 +136,13 @@ export default function Home() {
                 <div className="social horizCenter">
                   <ul className="horizCenter">
                     <li>
-                      <a href="https://www.linkedin.com/in/braypolk/">
+                      <a href="https://www.linkedin.com/in/braypolk/" target="blank">
                         <p>Linkedin</p>
                         <Linkedin />
                       </a>
                     </li>
                     <li>
-                      <a href="https://github.com/Braypolk">
+                      <a href="https://github.com/Braypolk" target="blank">
                         <p>Github</p>
                         <Github />
                       </a>
