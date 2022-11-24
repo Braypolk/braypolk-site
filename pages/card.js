@@ -1,596 +1,123 @@
-import Image from 'next/image';
+import { useState } from 'react'
+import { BottomSheet } from 'react-spring-bottom-sheet'
+import Image from 'next/image'
 import Head from 'next/head'
 
-import portrait from "../public/assets/portrait.jpg";
+import portrait from '../public/assets/portrait.jpg'
+import Popup from '../utils/Popup.js'
+// import 'react-spring-bottom-sheet/dist/style.css'
 
+export default function Card () {
+  let [open, setOpen] = useState(false)
 
-export default function Card() {
   return (
-    <span className="cardWrap">
-      <style jsx>{`
-        input[type='range']::-moz-range-track {
-            background: none;
-          }
-      
-          input[type='range']::-moz-range-thumb {
-            -moz-appearance: none;
-            width: 1.5rem;
-            height: 1.5rem;
-            border-radius: 0.25rem;
-            border: none;
-            background: #a7c7f5;
-            z-index: 3;
-            cursor: pointer;
-          }
-      
-          input[type='range']::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 1.5rem;
-            height: 1.5rem;
-            border-radius: 0.25rem;
-            border: none;
-            background: #a7c7f5;
-            z-index: 3;
-            cursor: pointer;
-          }
-
-          html {
-            background: #010101;
-          }
-      
-          .closeColor {}
-      
-          .topAction {}
-      
-          .iconColor {
-            color: #eee;
-            filter: invert(1)
-          }
-      
-          .cardColor {
-            color: #222 !important
-          }
-      
-          .textColor {
-            color: #eee !important
-          }
-      
-          .seekbarColor {
-            background: #a7c7f580 !important
-          }
-      `}</style>
-      <div
-        id="modal"
-        style={{
-          backgroundColor: "rgb(1, 1, 1)",
-          visibility: "hidden",
-          top: "2rem",
-          opacity: 0,
-        }}
-      >
-        <a id="close" className="closeColor">
-          <div className="icon">
-            <svg
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              style={{
-                fillRule: "evenodd",
-                clipRule: "evenodd",
-                strokeLinecap: "round",
-                strokeLinejoin: "round",
-                strokeMiterlimit: 2
-              }}
-            >
-              <path style={{ fill: "none" }} d="M0 0h24v24H0z" />
-              <path
-                d="M18 6 6 18M6 6l12 12"
-                style={{
-                  fill: "none",
-                  fillRule: "nonzero",
-                  stroke: "#fff",
-                  strokeWidth: 2
-                }}
-              />
-            </svg>
-          </div>
-        </a>
-        <div id="copyView">
-          <p className="textColor">
-            Copy and send the URL to share my Business Card
-          </p>{" test"}
-          <button id="copyURL" style={{ backgroundColor: "rgb(167, 199, 245)" }}>
-            <div className="icon iconColor">
-              <svg
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                style={{
-                  fillRule: "evenodd",
-                  clipRule: "evenodd",
-                  strokeLinecap: "round",
-                  strokeLinejoin: "round",
-                  strokeMiterlimit: 2
-                }}
-              >
-                <path style={{ fill: "none" }} d="M0 0h24v24H0z" />
-                <path
-                  d="M22 11a2 2 0 0 0-2-2h-9a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-9Z"
-                  style={{ fill: "none", stroke: "#fff", strokeWidth: 2 }}
-                />
-                <path
-                  d="M5 15H4c-1.097 0-2-.903-2-2V4c0-1.097.903-2 2-2h9c1.097 0 2 .903 2 2v1"
-                  style={{
-                    fill: "none",
-                    fillRule: "nonzero",
-                    stroke: "#fff",
-                    strokeWidth: 2
-                  }}
-                />
-              </svg>
-            </div>{" "}
-            <span className="iconColor">Copy URL</span>
-          </button>
-        </div>
-        {/* <div id="qrView" className="textColor">
-          <div id="qr" />
-          <h3>Scan the QR Code</h3>
-          <p>to view my Business Card on another device</p>
-        </div> */}
-      </div>
-      <header>
-        <div id="topActions" style={{ display: "none" }}>
-          <div>
-            <a id="share">
-              <div className="icon topAction">
-                <svg
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{
-                    fillRule: "evenodd",
-                    clipRule: "evenodd",
-                    strokeLinecap: "round",
-                    strokeMiterlimit: 2
-                  }}
-                >
-                  <g>
-                    <path style={{ fill: "none" }} d="M0 0h24v24H0z" />
-                    <clipPath id="a">
-                      <path d="M0 0h24v24H0z" />
-                    </clipPath>
-                    <g clipPath="url(#a)">
-                      <circle
-                        cx={17}
-                        cy={5}
-                        r={3}
-                        style={{ fill: "none", stroke: "#fff", strokeWidth: 2 }}
-                      />
-                      <circle
-                        cx={5}
-                        cy={12}
-                        r={3}
-                        style={{ fill: "none", stroke: "#fff", strokeWidth: 2 }}
-                      />
-                      <circle
-                        cx={17}
-                        cy={19}
-                        r={3}
-                        style={{ fill: "none", stroke: "#fff", strokeWidth: 2 }}
-                      />
-                      <path
-                        d="m7.59 13.51 6.83 3.98m-.01-10.98-6.82 3.98"
-                        style={{ fill: "none", stroke: "#fff", strokeWidth: 2 }}
-                      ></path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </a>{" "}
-            <a id="showQR">
-              <div className="icon topAction">
-                <svg
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{
-                    fillRule: "evenodd",
-                    clipRule: "evenodd",
-                    strokeLinecap: "round",
-                    strokeLinejoin: "round",
-                    strokeMiterlimit: 2
-                  }}
-                >
-                  <path style={{ fill: "none" }} d="M0 0h24v24H0z" />
-                  <path
-                    d="M4 4h4v4H4V4Zm0 12h4v4H4v-4ZM16 4h4v4h-4V4Z"
-                    style={{ fill: "none", stroke: "#fff", strokeWidth: 2 }}
-                  ></path>
-                  <path
-                    d="M12 4v14c0 1.097.903 2 2 2h4c1.097 0 2-.903 2-2v-4c0-1.097-.903-2-2-2H4"
-                    style={{
-                      fill: "none",
-                      stroke: "#fff",
-                      strokeWidth: 2,
-                      strokeLinejoin: "miter"
-                    }}
-                  />
-                  <path style={{ fill: "#fff" }} d="M15 15h2v2h-2z" />
-                </svg>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div className="headerImgC"></div>
-      </header>
-      <main style={{ backgroundColor: "rgb(1, 1, 1)", marginTop: "5rem" }}>
-        <span className="cardImg">
-          {/* <Image
-          alt="Professional portrait of Bray"
-          src={portrait}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="top"
-          placeholder="blur"
-          priority="true"
-        /> */}
+    <div className='border-box'>
+      <div className='container'>
+        <span className='test'>
+          <span className='imageStyle'>
+            <Image
+              alt='Professional portrait of Bray'
+              src={portrait}
+              // layout='fill'
+              // objectFit='cover'
+              objectPosition='top'
+              placeholder='blur'
+              priority='true'
+            />
+          </span>
         </span>
-        <div id="info" className="textColor">
-          <p className="name">Bray Polkinghorne</p>
-          <p className="jobtitle"></p>
-          <p className="bizname"></p>
-        </div>
-        <a
-          id="cta"
-          rel="noreferrer"
-          download=""
-          target="_blank"
-          aria-label="Save Contact"
-          style={{ backgroundColor: "rgb(167, 199, 245)" }}
-          href="braypolkinghorne.vcf"
-        >
-          <div className="icon iconColor">
+        {/* todo: should change this to a transition */}
+        {!open && (
+          <div className='header'>
+            <h1 className='head1'>Bray Polkinghorne</h1>
+            <div className='jobtitle'>
+              <h3 className='head3'>Maven Wave: </h3>
+              <h4 className='head4'>DevOps Consultant</h4>
+            </div>
+            <span>
+              <a className='link' href='#'>
+                bray.dev
+              </a>
+            </span>
+          </div>
+        )}
+        <a className='download' href='/assets/contact.vcf' download>
+          <div className='contact'>
             <svg
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              style={{
-                fillRule: "evenodd",
-                clipRule: "evenodd",
-                strokeLinecap: "round",
-                strokeLinejoin: "round",
-                strokeMiterlimit: 2
-              }}
+              width='40'
+              height='40'
+              fill-rule='evenodd'
+              stroke-linejoin='round'
+              stroke-miterlimit='1.414'
+              clip-rule='evenodd'
+              viewBox='0 0 96 96'
             >
-              <path style={{ fill: "none" }} d="M0 0h24v24H0z" />
-              <circle
-                cx="8.5"
-                cy={7}
-                r={4}
-                style={{ fill: "none", stroke: "#fff", strokeWidth: "2.29px" }}
-                transform="matrix(.875 0 0 .875 4.563 -.625)"
+              <path
+                fill-rule='nonzero'
+                d='M70.834,3C82.425,3.111 92.886,13.159 93,25.166C93.049,40.437 93.143,55.708 92.998,70.977C92.816,82.459 82.841,92.886 70.834,93C55.563,93.049 40.292,93.143 25.023,92.998C13.543,92.816 3.115,82.841 3,70.834C2.952,55.563 2.857,40.292 3.002,25.023C3.184,13.541 13.159,3.115 25.166,3C40.389,2.952 55.611,2.952 70.834,3ZM25.315,9C16.855,9.027 9.085,16.286 9,25.204C8.952,40.437 8.856,55.67 9.001,70.901C9.134,79.284 16.416,86.916 25.204,87C40.437,87.049 55.67,87.143 70.901,86.999C79.289,86.865 86.916,79.584 87,70.796C87.049,55.563 87.143,40.33 86.999,25.099C86.865,16.712 79.595,9.084 70.796,9C55.636,8.952 40.475,9 25.315,9Z'
+                fill='#918E9B'
               />
               <path
-                d="M86 181c0-3.863 3.137-7 7-7s7 3.137 7 7"
-                style={{ fill: "none", stroke: "#fff", strokeWidth: 2 }}
-                transform="translate(-81 -163)"
-              />
-              <path
-                d="M104 168v6m3-3-3 3-3-3"
-                style={{
-                  fill: "none",
-                  fillRule: "nonzero",
-                  stroke: "#fff",
-                  strokeWidth: 2
-                }}
-                transform="translate(-92 -152)"
+                fill-rule='nonzero'
+                d='M48.249 15.415C59.178 15.622 68.671 26.285 67.113 37.408 65.838 46.504 57.241 54.013 48 54.013 36.881 54.013 26.945 42.8 29.002 31.301 30.558 22.599 38.598 15.589 47.751 15.415 48 15.413 48 15.413 48.249 15.415zM47.828 21.414C39.039 21.581 31.897 31.942 36.011 40.474 39.616 47.953 50.952 50.271 57.173 44.339 64.445 37.406 60.6 21.651 48.172 21.414 48 21.413 48 21.413 47.828 21.414zM48.298 58.014C60.127 58.177 71.525 65.212 76.794 76.046 77.903 78.326 75.659 81.393 73.097 80.375 71.196 79.619 70.68 77.118 69.461 75.34 62.102 64.604 46.158 60.832 34.704 67.67 30.298 70.3 26.725 74.255 24.498 78.887 24.498 78.887 23.476 80.51 21.938 80.584 19.586 80.696 18.093 78.102 19.714 75.047 25.15 64.797 36.377 57.96 48.298 58.014z'
+                fill='#918E9B'
               />
             </svg>
+            Download Contact
           </div>
-          <p className="iconColor">Save Contact</p>
         </a>
-        <div className="actions">
-          <div className="actionsC">
-            <div className="actionBtn">
-              <a
-                href="tel:0000000000" // change this to be real when some sort of security is in place
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Mobile"
-                style={{ backgroundColor: "rgb(167, 199, 245)" }}
-              >
-                <div className="icon iconColor">
-                  <svg
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{
-                      fillRule: "evenodd",
-                      clipRule: "evenodd",
-                      strokeLinecap: "round",
-                      strokeLinejoin: "round",
-                      strokeMiterlimit: 2
-                    }}
-                  >
-                    <path style={{ fill: "none" }} d="M0 0h24v24H0z" />
-                    <path
-                      d="M11.5 22a.952.952 0 0 1-1.052.945c-4.358-.544-7.851-4.338-8.379-8.39a.938.938 0 0 1 .936-1.046c.399-.009.847-.009 1.202-.009.388 0 .738.237.882.597l.478 1.196a.95.95 0 0 1-.21 1.025l-.107.107a.951.951 0 0 0-.181 1.091c.495.825 1.59 1.92 2.425 2.396a.927.927 0 0 0 1.066-.177c.05-.02.086-.056.122-.092a.95.95 0 0 1 1.025-.21l1.196.478c.36.144.597.494.597.882V22Z"
-                      style={{ fill: "none", stroke: "#fff", strokeWidth: ".95px" }}
-                      transform="translate(-2.21 -26.421) scale(2.10526)"
-                    ></path>
-                  </svg>
-                </div>
-              </a>
-              <p className="textColor">Mobile</p>
-            </div>
-          </div>
-          <div className="actionsC">
-            <div className="actionBtn">
-              <a
-                href="sms:3038100756"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="SMS"
-                style={{ backgroundColor: "rgb(167, 199, 245)" }}
-              >
-                <div className="icon iconColor">
-                  <svg
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{
-                      fillRule: "evenodd",
-                      clipRule: "evenodd",
-                      strokeLinecap: "round",
-                      strokeLinejoin: "round",
-                      strokeMiterlimit: 2
-                    }}
-                  >
-                    <path style={{ fill: "none" }} d="M0 0h24v24H0z" />
-                    <path
-                      d="M75.3 61c.477 0 .935.171 1.273.476.337.305.527.718.527 1.149v8.125c0 .897-.806 1.625-1.8 1.625h-8.975a9.7 9.7 0 0 0-4.992 1.365L60.9 74V62.625c0-.431.19-.844.527-1.149A1.904 1.904 0 0 1 62.7 61h12.6Z"
-                      style={{
-                        fill: "none",
-                        stroke: "#fff",
-                        strokeWidth: "1.71px"
-                      }}
-                      transform="matrix(1.11111 0 0 1.23077 -64.667 -71.077)"
-                    />
-                    <path
-                      d="M36 13h4"
-                      style={{
-                        fill: "none",
-                        stroke: "#fff",
-                        strokeWidth: 2,
-                        strokeLinejoin: "miter"
-                      }}
-                      transform="translate(-28)"
-                    />
-                    <path
-                      d="M36 9h8"
-                      style={{ fill: "none", stroke: "#fff", strokeWidth: 2 }}
-                      transform="translate(-28)"
-                    />
-                  </svg>
-                </div>
-              </a>
-              <p className="textColor">SMS</p>
-            </div>
-          </div>
-          <div className="actionsC">
-            <div className="actionBtn">
-              <a
-                href="mailto:test@test.com" // change this to be real when some sort of security is in place
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Email"
-                style={{ backgroundColor: "rgb(167, 199, 245)" }}
-              >
-                <div className="icon iconColor">
-                  <svg
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{
-                      fillRule: "evenodd",
-                      clipRule: "evenodd",
-                      strokeLinecap: "round",
-                      strokeLinejoin: "round",
-                      strokeMiterlimit: 2
-                    }}
-                  >
-                    <path style={{ fill: "none" }} d="M0 0h24v24H0z" />
-                    <path
-                      d="M22 33.75c0-.966-.896-1.75-2-1.75H4c-1.104 0-2 .784-2 1.75v10.5c0 .966.896 1.75 2 1.75h16c1.104 0 2-.784 2-1.75v-10.5Z"
-                      style={{
-                        fill: "none",
-                        stroke: "#fff",
-                        strokeWidth: "1.86px"
-                      }}
-                      transform="matrix(1 0 0 1.14286 0 -32.571)"
-                    />
-                    <path
-                      d="m18 7.042-6 2.625-6-2.625"
-                      style={{
-                        fill: "none",
-                        fillRule: "nonzero",
-                        stroke: "#fff",
-                        strokeWidth: "1.86px"
-                      }}
-                      transform="matrix(1 0 0 1.14286 0 1.952)"
-                    />
-                  </svg>
-                </div>
-              </a>
-              <p className="textColor">Email</p>
-            </div>
-          </div>
-          <div className="actionsC">
-            <div className="actionBtn">
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Website"
-                href="bray.dev"
-                style={{ backgroundColor: "rgb(167, 199, 245)" }}
-              >
-                <div className="icon iconColor">
-                  <svg
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{
-                      fillRule: "evenodd",
-                      clipRule: "evenodd",
-                      strokeLinecap: "round",
-                      strokeLinejoin: "round",
-                      strokeMiterlimit: 2
-                    }}
-                  >
-                    <g>
-                      <path style={{ fill: "none" }} d="M0 0h24v24H0z" />
-                      <clipPath id="a">
-                        <path d="M0 0h24v24H0z" />
-                      </clipPath>
-                      <g clipPath="url(#a)">
-                        <circle
-                          cx={12}
-                          cy={12}
-                          r={10}
-                          style={{ fill: "none", stroke: "#fff", strokeWidth: 2 }}
-                        />
-                        <ellipse
-                          cx={40}
-                          cy={40}
-                          rx={4}
-                          ry={10}
-                          style={{
-                            fill: "none",
-                            stroke: "#fff",
-                            strokeWidth: 2,
-                            strokeLinejoin: "miter"
-                          }}
-                          transform="translate(-28 -28)"
-                        />
-                        <path
-                          d="M40 50s-2-4-2-10 2-10 2-10"
-                          style={{ fill: "none", stroke: "#fff", strokeWidth: 2 }}
-                          transform="rotate(-90 11.5 39.5)"
-                        />
-                      </g>
-                    </g>
-                  </svg>
-                </div>
-              </a>
-              <p className="textColor">Website</p>
-            </div>
-          </div>
+        <div className='connect'>
+          <Popup />
         </div>
-        <div className="actions secondary">
-          <div className="actionsC">
-            <div className="actionBtn secBtn">
-              <a
-                href="https://linkedin.com/https://www.linkedin.com/in/braypolk/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                style={{ background: "rgb(0, 119, 181)" }}
-              >
-                <div className="icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="#fff"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M20 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM8.339 18.337H5.667v-8.59h2.672v8.59zM7.003 8.574a1.548 1.548 0 1 1 0-3.096 1.548 1.548 0 0 1 0 3.096zm11.335 9.763h-2.669V14.16c0-.996-.018-2.277-1.388-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248h-2.667v-8.59h2.56v1.174h.037c.355-.675 1.227-1.387 2.524-1.387 2.704 0 3.203 1.778 3.203 4.092v4.71z"></path>
-                  </svg>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div className="actionsC">
-            <div className="actionBtn secBtn">
-              <a
-                href="https://github.com/https://github.com/Braypolk"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                style={{ background: "rgb(51, 51, 51)" }}
-              >
-                <div className="icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={24}
-                    height={24}
-                    fill="#fff"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12.03 2a9.97 9.97 0 0 0-3.16 19.44c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.91-.61.06-.6.06-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.33 1.08 2.9.83.1-.65.35-1.09.64-1.34-2.22-.25-4.55-1.1-4.55-4.93 0-1.08.4-1.98 1.03-2.67-.1-.26-.45-1.27.1-2.64 0 0 .83-.27 2.74 1.02a9.58 9.58 0 0 1 5 0c1.9-1.3 2.73-1.02 2.73-1.02.55 1.37.2 2.38.1 2.64.64.7 1.03 1.58 1.03 2.67 0 3.84-2.33 4.68-4.56 4.92.36.31.68.92.68 1.85l-.01 2.74c0 .26.18.57.68.48A9.98 9.98 0 0 0 12.03 2z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div className="actionsC">
-            <div className="actionBtn secBtn">
-              <a
-                href="https://instagram.com/https://www.instagram.com/braypolk/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                style={{ background: "rgb(255, 255, 255)" }}
-              >
-                <div className="icon">
-                  <svg
-                    viewBox="0 0 24 24"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{
-                      fillRule: "evenodd",
-                      clipRule: "evenodd",
-                      strokeLinejoin: "round",
-                      strokeMiterlimit: 2
-                    }}
-                  >
-                    <path
-                      d="M4.796,1.577C4.072,1.859 3.459,2.234 2.847,2.847C2.234,3.455 1.859,4.073 1.577,4.793C1.304,5.49 1.121,6.291 1.067,7.463C1.013,8.634 1,9.01 1,11.998C1,14.985 1.013,15.361 1.067,16.533C1.121,17.705 1.309,18.505 1.577,19.203C1.859,19.927 2.234,20.54 2.847,21.153C3.459,21.766 4.072,22.141 4.796,22.423C5.494,22.696 6.294,22.879 7.466,22.933C8.637,22.987 9.013,23 12,23C14.987,23 15.363,22.987 16.534,22.933C17.706,22.879 18.506,22.691 19.204,22.423C19.928,22.141 20.541,21.766 21.153,21.153C21.766,20.54 22.141,19.927 22.423,19.203C22.696,18.505 22.879,17.705 22.933,16.533C22.987,15.361 23,14.985 23,11.998C23,9.01 22.987,8.634 22.933,7.463C22.879,6.291 22.691,5.49 22.423,4.793C22.141,4.073 21.766,3.455 21.158,2.847C20.545,2.234 19.933,1.859 19.208,1.577C18.511,1.304 17.71,1.121 16.539,1.067C15.367,1.013 14.991,1 12.004,1C9.017,1 8.642,1.013 7.47,1.067C6.294,1.116 5.494,1.304 4.796,1.577ZM16.445,3.044C17.518,3.093 18.099,3.272 18.488,3.424C19.002,3.625 19.369,3.862 19.754,4.247C20.138,4.632 20.375,4.998 20.576,5.513C20.728,5.902 20.907,6.483 20.957,7.557C21.01,8.715 21.019,9.064 21.019,12.002C21.019,14.941 21.006,15.289 20.957,16.448C20.907,17.521 20.728,18.103 20.576,18.492C20.375,19.006 20.138,19.373 19.754,19.757C19.369,20.142 19.002,20.379 18.488,20.58C18.099,20.732 17.518,20.911 16.445,20.961C15.287,21.014 14.938,21.023 12,21.023C9.062,21.023 8.713,21.01 7.555,20.961C6.482,20.911 5.901,20.732 5.512,20.58C4.998,20.379 4.631,20.142 4.246,19.757C3.862,19.373 3.625,19.006 3.424,18.492C3.272,18.103 3.093,17.521 3.043,16.448C2.99,15.289 2.981,14.941 2.981,12.002C2.981,9.064 2.994,8.715 3.043,7.557C3.093,6.483 3.272,5.902 3.424,5.513C3.625,4.998 3.862,4.632 4.246,4.247C4.631,3.862 4.998,3.625 5.512,3.424C5.901,3.272 6.482,3.093 7.555,3.044C8.713,2.99 9.062,2.981 12,2.981C14.938,2.981 15.287,2.99 16.445,3.044ZM6.352,12.002C6.352,15.124 8.883,17.651 12,17.651C15.117,17.651 17.648,15.12 17.648,12.002C17.648,8.885 15.121,6.354 12,6.354C8.879,6.354 6.352,8.88 6.352,12.002ZM15.667,12.002C15.667,14.028 14.026,15.67 12,15.67C9.974,15.67 8.333,14.028 8.333,12.002C8.333,9.976 9.974,8.335 12,8.335C14.026,8.335 15.667,9.976 15.667,12.002ZM17.876,4.811C18.604,4.811 19.195,5.402 19.195,6.13C19.195,6.858 18.604,7.449 17.876,7.449C17.148,7.449 16.557,6.858 16.557,6.13C16.557,5.402 17.148,4.811 17.876,4.811Z"
-                      style={{ fill: "url(#YSppkUn)", fillRule: "nonzero" }}
-                    />
-                    <defs>
-                      <radialGradient
-                        id="YSppkUn"
-                        cx={0}
-                        cy={0}
-                        r={1}
-                        gradientUnits="userSpaceOnUse"
-                        gradientTransform="matrix(-22,22,-22,-22,23,1)"
-                      >
-                        <stop
-                          offset={0}
-                          style={{ stopColor: "#4c63d2", stopOpacity: 1 }}
-                        />
-                        <stop
-                          offset="0.4"
-                          style={{ stopColor: "#bc3081", stopOpacity: 1 }}
-                        />
-                        <stop
-                          offset="0.75"
-                          style={{ stopColor: "#f47133", stopOpacity: 1 }}
-                        />
-                        <stop
-                          offset={1}
-                          style={{ stopColor: "#fed576", stopOpacity: 1 }}
-                        />
-                      </radialGradient>
-                    </defs>
-                  </svg>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="featured">
-          <h2 className="section textColor">Section title</h2>
-        </div>
-      </main>
-      {/* <script>let m = document.getElementById("modal"), c = document.getElementById("close"), ki = document.getElementById("keyView"), cv = document.getElementById("copyView"), curl = document.getElementById("copyURL"), qrv = document.getElementById("qrView"), qr = document.getElementById("qr"), s = document.getElementById("share"), sqr = document.getElementById("showQR"), sk = document.getElementById("showKey"); function tC(e) {"2rem" == e.style.top ? (e.style.visibility = "visible", e.style.top = "0px", e.style.opacity = 1) : (e.style.top = "2rem", e.style.opacity = 0, setTimeout(() => { e.style.visibility = "hidden" }, 200))} function dN(e) {e.style.display = "none"} window.addEventListener("load", () => {document.querySelector("#topActions").style.display = "flex", qr.innerHTML = new QRCode({ content: window.location.href, container: "svg-viewbox", join: !0, ecl: "L", padding: 0 }).svg()}), navigator.canShare ? s.addEventListener("click", () => {navigator.share({ title: document.title, text: "You can view my Digital Business Card here:", url: window.location.href })}) : s.addEventListener("click", () => {tC(m), cv.style.display = "flex", dN(qrv), ki && dN(ki)}), sqr.addEventListener("click", () => {tC(m), qrv.style.display = "block", dN(cv), ki && dN(ki)}), sk && sk.addEventListener("click", () => {tC(m), ki && (ki.style.display = "flex"), dN(cv), dN(qrv)}), c.addEventListener("click", () => tC(m)), curl.addEventListener("click", async () => {let e = curl.querySelectorAll(".iconColor")[1]; await navigator.clipboard.writeText(window.location.href).then(t => {e.innerText = "Copied", setTimeout(() => { e.innerText = "Copy URL" }, 1e3)})});</script>
-            <script>let pC = document.querySelectorAll(".pCtrl"), pP = document.querySelectorAll(".playPause"), srcs = document.querySelectorAll(".source"); srcs.forEach(e => {e.style.pointerEvents = "none", e.removeAttribute("controls")}), pC.forEach((e, l) => {e.style.display = "flex"; let r = e.querySelector(".currentTime"), s = e.querySelector(".seekBar"), t = e.querySelector(".playPause"), a = t.querySelector(".play"), c = t.querySelector(".pause"); srcs[l].addEventListener("timeupdate", () => {let e = srcs[l].currentTime, t = 100 / srcs[l].duration * e; s.value = t, 100 == t && (s.value = 0, a.style.display = "block", c.style.display = "none"); let o = Math.floor(e / 60), y = Math.floor(e % 60); o.toString().length < 2 && (o = "0" + o), y.toString().length < 2 && (y = "0" + y), r.value = o + ":" + y}), s.addEventListener("change", () => {srcs[l].currentTime = srcs[l].duration * (parseInt(s.value) / 100)}), t.addEventListener("click", () => {srcs[l].paused ? (srcs.forEach((e, r) => { l != r && (e.paused || e.pause()) }), pP.forEach((e, l) => { let r = e.querySelector(".play"), s = e.querySelector(".pause"); r.style.display = "block", s.style.display = "none" }), srcs[l].play(), a.style.display = "none", c.style.display = "block") : (srcs[l].pause(), c.style.display = "none", a.style.display = "block")})});</script> */}
+        <div className='footer'>
+          <a href='https://www.linkedin.com/in/braypolk/' target='_blank'>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='40'
+              height='40'
+              fill-rule='evenodd'
+              clip-rule='evenodd'
+              image-rendering='optimizeQuality'
+              shape-rendering='geometricPrecision'
+              text-rendering='geometricPrecision'
+              viewBox='0 0 201 201'
+            >
+              <rect width='201' height='201' fill='#918E9B' rx='19' ry='19' />
+              <path d='M39 102v60h29V80H39zM54 39c-8 0-15 7-15 15 0 7 7 14 15 14 7 0 14-7 14-14 0-8-7-15-14-15zm107 66c-2-15-9-25-30-25-12 0-20 5-24 11V80H84v82h24v-41c0-10 2-21 15-21s14 13 14 22v40h25v-45c0-4 0-8-1-12z' />
+            </svg>
+          </a>
 
-    </span>
+          <a href='https://github.com/Braypolk' target='_blank'>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='40'
+              height='40'
+              viewBox='0 0 26 26'
+              fill='none'
+            >
+              <path
+                d='M22.8224 0.500061H3.17955C1.70075 0.500061 0.500977 1.69984 0.500977 3.17863V22.8215C0.500977 24.3003 1.70075 25.5001 3.17955 25.5001H22.8224C24.3012 25.5001 25.501 24.3003 25.501 22.8215V3.17863C25.501 1.69984 24.3012 0.500061 22.8224 0.500061ZM15.9753 21.9119C15.5066 21.9956 15.3336 21.7054 15.3336 21.4655C15.3336 21.1641 15.3447 19.6239 15.3447 18.3795C15.3447 17.509 15.0545 16.9565 14.7141 16.6664C16.7789 16.4376 18.9552 16.153 18.9552 12.5871C18.9552 11.5715 18.5925 11.0637 18.001 10.4108C18.0958 10.1708 18.4139 9.1831 17.9061 7.89962C17.1304 7.65966 15.3559 8.8985 15.3559 8.8985C14.6193 8.69203 13.8213 8.586 13.0345 8.586C12.2476 8.586 11.4496 8.69203 10.713 8.8985C10.713 8.8985 8.93848 7.65966 8.16281 7.89962C7.65499 9.17752 7.96749 10.1652 8.06794 10.4108C7.47642 11.0637 7.19741 11.5715 7.19741 12.5871C7.19741 16.1362 9.27888 16.4376 11.3436 16.6664C11.0758 16.9063 10.8358 17.3193 10.7521 17.9108C10.222 18.1507 8.86593 18.5637 8.05678 17.1351C7.54897 16.2534 6.63379 16.1809 6.63379 16.1809C5.72977 16.1697 6.57241 16.7501 6.57241 16.7501C7.17508 17.0291 7.59919 18.1005 7.59919 18.1005C8.14049 19.7579 10.7298 19.1998 10.7298 19.1998C10.7298 19.9755 10.7409 21.2367 10.7409 21.4655C10.7409 21.7054 10.5735 21.9956 10.0992 21.9119C6.41616 20.6786 3.83803 17.1742 3.83803 13.0782C3.83803 7.95542 7.75544 4.06591 12.8782 4.06591C18.001 4.06591 22.1528 7.95542 22.1528 13.0782C22.1583 17.1742 19.6583 20.6842 15.9753 21.9119ZM10.501 18.5023C10.3949 18.5246 10.2945 18.48 10.2833 18.4074C10.2722 18.3237 10.3447 18.2512 10.4508 18.2289C10.5568 18.2177 10.6572 18.2623 10.6684 18.3349C10.6851 18.4074 10.6126 18.48 10.501 18.5023ZM9.97084 18.4521C9.97084 18.5246 9.88714 18.586 9.77553 18.586C9.65276 18.5972 9.56906 18.5358 9.56906 18.4521C9.56906 18.3795 9.65276 18.3181 9.76437 18.3181C9.8704 18.307 9.97084 18.3684 9.97084 18.4521ZM9.20633 18.3907C9.18401 18.4632 9.0724 18.4967 8.97754 18.4632C8.87151 18.4409 8.79897 18.3572 8.82129 18.2847C8.84361 18.2121 8.95522 18.1786 9.05008 18.201C9.16169 18.2344 9.23424 18.3181 9.20633 18.3907ZM8.51995 18.0893C8.46973 18.1507 8.3637 18.1396 8.27999 18.0559C8.19629 17.9833 8.17397 17.8773 8.22977 17.8271C8.27999 17.7657 8.38602 17.7768 8.46973 17.8606C8.54227 17.9331 8.57017 18.0447 8.51995 18.0893ZM8.01214 17.5815C7.96192 17.615 7.86705 17.5815 7.80566 17.4978C7.74428 17.4141 7.74428 17.3193 7.80566 17.2802C7.86705 17.23 7.96192 17.269 8.01214 17.3527C8.07352 17.4364 8.07352 17.5369 8.01214 17.5815ZM7.64942 17.0402C7.59919 17.0905 7.51549 17.0626 7.4541 17.0068C7.39272 16.9342 7.38156 16.8505 7.43178 16.8114C7.482 16.7612 7.56571 16.7891 7.62709 16.8449C7.68848 16.9175 7.69964 17.0012 7.64942 17.0402ZM7.27553 16.6273C7.25321 16.6775 7.18066 16.6887 7.11928 16.6496C7.04674 16.6161 7.01325 16.5547 7.03557 16.5045C7.0579 16.471 7.11928 16.4543 7.19183 16.4822C7.26437 16.5213 7.29785 16.5827 7.27553 16.6273Z'
+                fill='#918E9B'
+              />
+            </svg>
+          </a>
 
+          <a href='https://www.instagram.com/braypolk/' target='_blank'>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='40'
+              height='40'
+              viewBox='0 0 25 25'
+              fill='none'
+            >
+              <path
+                d='M12.5 9.52344C11.9113 9.52366 11.336 9.69842 10.8466 10.0256C10.3573 10.3528 9.97593 10.8178 9.75081 11.3617C9.52569 11.9056 9.46691 12.5041 9.58188 13.0814C9.69686 13.6587 9.98044 14.189 10.3968 14.6051C10.8131 15.0213 11.3435 15.3047 11.9208 15.4195C12.4982 15.5342 13.0966 15.4752 13.6405 15.2499C14.1843 15.0246 14.6491 14.643 14.9761 14.1536C15.3031 13.6641 15.4777 13.0887 15.4777 12.5C15.4771 11.7106 15.1631 10.9536 14.6048 10.3955C14.0465 9.83739 13.2894 9.52373 12.5 9.52344ZM19.4593 7.23549C19.3077 6.85148 19.0789 6.50269 18.787 6.21077C18.4951 5.91886 18.1463 5.69004 17.7623 5.5385C16.5904 5.07589 13.8002 5.17969 12.5 5.17969C11.1998 5.17969 8.41239 5.07199 7.23717 5.5385C6.85315 5.69004 6.50436 5.91886 6.21245 6.21077C5.92053 6.50269 5.69171 6.85148 5.54018 7.23549C5.07812 8.40737 5.18136 11.2003 5.18136 12.4994C5.18136 13.7986 5.07813 16.5882 5.54241 17.764C5.69394 18.148 5.92276 18.4968 6.21468 18.7887C6.5066 19.0806 6.85538 19.3094 7.2394 19.4609C8.41127 19.9235 11.2015 19.8198 12.5022 19.8198C13.803 19.8198 16.5893 19.9275 17.7645 19.4609C18.1485 19.3094 18.4973 19.0806 18.7892 18.7887C19.0811 18.4968 19.31 18.148 19.4615 17.764C19.9275 16.5921 19.8203 13.7991 19.8203 12.5C19.8203 11.2009 19.9275 8.41183 19.4615 7.23605L19.4593 7.23549ZM12.5 17.0759C11.595 17.0759 10.7103 16.8075 9.95777 16.3047C9.20527 15.8019 8.61877 15.0873 8.27243 14.2511C7.92609 13.415 7.83547 12.4949 8.01203 11.6073C8.18859 10.7197 8.62441 9.90431 9.26436 9.26436C9.90431 8.62441 10.7197 8.18859 11.6073 8.01203C12.4949 7.83547 13.415 7.92609 14.2511 8.27243C15.0873 8.61877 15.8019 9.20527 16.3047 9.95777C16.8075 10.7103 17.0759 11.595 17.0759 12.5C17.0766 13.1011 16.9588 13.6965 16.7291 14.252C16.4994 14.8075 16.1623 15.3122 15.7373 15.7373C15.3122 16.1623 14.8075 16.4994 14.252 16.7291C13.6965 16.9588 13.1011 17.0766 12.5 17.0759ZM17.2645 8.80022C17.0532 8.80033 16.8467 8.73779 16.671 8.62049C16.4952 8.5032 16.3583 8.33642 16.2773 8.14127C16.1964 7.94611 16.1752 7.73134 16.2163 7.52411C16.2575 7.31689 16.3592 7.12652 16.5085 6.97709C16.6579 6.82766 16.8482 6.72588 17.0554 6.68463C17.2626 6.64337 17.4774 6.66449 17.6726 6.74531C17.8678 6.82614 18.0346 6.96304 18.152 7.13869C18.2694 7.31435 18.332 7.52087 18.332 7.73214C18.3326 7.87244 18.3055 8.01147 18.2522 8.14127C18.199 8.27106 18.1206 8.38906 18.0216 8.4885C17.9227 8.58794 17.805 8.66686 17.6755 8.72074C17.5459 8.77461 17.407 8.80238 17.2667 8.80246L17.2645 8.80022ZM22.3214 0H2.67857C1.96817 0 1.28686 0.282206 0.784535 0.784536C0.282206 1.28687 0 1.96817 0 2.67857L0 22.3214C0 23.0318 0.282206 23.7131 0.784535 24.2155C1.28686 24.7178 1.96817 25 2.67857 25H22.3214C23.0318 25 23.7131 24.7178 24.2155 24.2155C24.7178 23.7131 25 23.0318 25 22.3214V2.67857C25 1.96817 24.7178 1.28687 24.2155 0.784536C23.7131 0.282206 23.0318 0 22.3214 0ZM21.3661 16.183C21.2941 17.6133 20.9676 18.8806 19.9235 19.9219C18.8795 20.9632 17.6133 21.2963 16.1847 21.3644C14.7109 21.4475 10.2924 21.4475 8.81864 21.3644C7.38839 21.2924 6.12556 20.9654 5.0798 19.9219C4.03404 18.8783 3.70536 17.6105 3.63728 16.183C3.55413 14.7087 3.55413 10.2896 3.63728 8.81697C3.70926 7.38672 4.03181 6.11942 5.0798 5.07813C6.12779 4.03683 7.39397 3.70759 8.81864 3.63951C10.2924 3.55636 14.7109 3.55636 16.1847 3.63951C17.615 3.7115 18.8817 4.0385 19.9235 5.08203C20.9654 6.12556 21.298 7.39342 21.3661 8.82366C21.4492 10.2924 21.4492 14.7076 21.3661 16.183Z'
+                fill='#918E9B'
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
   )
 }

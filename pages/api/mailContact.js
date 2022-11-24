@@ -39,24 +39,23 @@ export default function handler(req, res) {
 
   const data = {
     to: 'braypolk@gmail.com',
-    subject: 'New Message From BrayPolk Site',
+    subject: 'Great Meeting You',
     from: 'brayPolkSite@bray.dev',
     text: message,
     html: message.replace(/\r\n/g, '<br/>')
   };
 console.log(data);
-  return res.status(200).json({message:'testing'})
   
-  // (async () => {
-  //   try {
-  //     await mail.send(data);
-  //     return res.status(200).json({message:'Looks good'})
-  //   } catch (error) {
-  //     console.error(error);
-  //     if (error.response) {
-  //       console.error(error.response.body)
-  //       return res.status(422).json({message:'Something went wrong'})
-  //     }
-  //   }
-  // })();
+  (async () => {
+    try {
+      await mail.send(data);
+      return res.status(200).json({message:'Looks good'})
+    } catch (error) {
+      console.error(error);
+      if (error.response) {
+        console.error(error.response.body)
+        return res.status(422).json({message:'Something went wrong'})
+      }
+    }
+  })();
 }

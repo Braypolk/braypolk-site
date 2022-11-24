@@ -11,9 +11,14 @@
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
     "@vercel/analytics": "^0.1.5",
+    "cookies-next": "^2.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
     "next": "12.1.6",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-bottom-drawer": "^0.1.1",
+    "react-dom": "18.1.0",
+    "react-spring-bottom-sheet": "^3.4.1"
   },
   "devDependencies": {
     "eslint": "8.17.0",
