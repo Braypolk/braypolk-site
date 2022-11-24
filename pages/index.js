@@ -192,7 +192,6 @@ export default function Home () {
               </div>
             </div>
             <div className='bottom'></div>
-            <Link href='/test'>Go to test</Link>
           </div>
         </div>
       </div>
