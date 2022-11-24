@@ -32,7 +32,7 @@ export default function handler(req, res) {
   }
 
   const message = `
-    Great meeting you today!
+    Great meeting you today!\r\n
     Name: Bray Polkinghorne\r\n
     Email: braypolk@gmail.com\r\n
   `;
@@ -44,11 +44,34 @@ export default function handler(req, res) {
     text: message,
     html: message.replace(/\r\n/g, '<br/>')
   };
+
+  const messageToMe = `
+    Name: ${body.name}\r\n
+    Email: ${body.email}\r\n
+    Phone: ${body.phone}
+  `;
+
+  const dataToMe = {
+    to: 'braypolk@gmail.com',
+    subject: 'New Message From BrayPolk Site',
+    from: 'brayPolkSite@bray.dev',
+    text: messageToMe,
+    html: messageToMe.replace(/\r\n/g, '<br/>')
+  };
 console.log(data);
   
   (async () => {
     try {
       await mail.send(data);
+      try {
+        await mail.send(dataToMe);
+      } catch (error) {
+        console.error(error);
+      if (error.response) {
+        console.error(error.response.body)
+        return res.status(422).json({message:'Something went wrong'})
+      }
+      }
       return res.status(200).json({message:'Looks good'})
     } catch (error) {
       console.error(error);
