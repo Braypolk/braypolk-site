@@ -35,7 +35,7 @@ export default function Card () {
               <h4 className='head4'>DevOps Consultant</h4>
             </div>
             <span>
-              <a className='link' href='#'>
+              <a className='link' href='https://bray.dev'>
                 bray.dev
               </a>
             </span>
