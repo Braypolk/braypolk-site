@@ -47,19 +47,19 @@ const Popup = () => {
             type='text'
             id='name'
             name='name'
-            placeholder='Name'
+            placeholder='Your Name'
           />
           <input
             required
             type='email'
             id='email'
             name='email'
-            placeholder='Email'
+            placeholder='Your Email'
           />
           <input
             id='phone'
             name='phone'
-            placeholder='Phone'
+            placeholder='Your Phone'
             onChange={e => handleInput(e)}
             value={inputValue}
           />
