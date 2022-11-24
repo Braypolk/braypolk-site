@@ -32,13 +32,13 @@ export default function handler(req, res) {
   }
 
   const message = `
-    Name: ${body.name}\r\n
-    Email: ${body.email}\r\n
-    Message: ${body.message}
+    Great meeting you today!
+    Name: Bray Polkinghorne\r\n
+    Email: braypolk@gmail.com\r\n
   `;
 
   const data = {
-    to: 'braypolk@gmail.com',
+    to: body.email,
     subject: 'Great Meeting You',
     from: 'brayPolkSite@bray.dev',
     text: message,
