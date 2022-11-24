@@ -48,7 +48,7 @@ export default function Card () {
               height='40'
               fillRule='evenodd'
               strokeLinejoin='round'
-              stroke-miterlimit='1.414'
+              strokeMiterlimit='1.414'
               clipRule='evenodd'
               viewBox='0 0 96 96'
             >
