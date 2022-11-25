@@ -16,12 +16,12 @@ export default function handler (req, res) {
   const body = JSON.parse(req.body)
 
   // check if form is empty
-  for (const key in body) {
-    console.log(key, body[key])
-    if (body[key] === '' || !body[key]) {
-      return res.status(422).json({ message: 'Form value is empty' })
-    }
-  }
+  // for (const key in body) {
+  //   console.log(key, body[key])
+  //   if (body[key] === '' || !body[key]) {
+  //     return res.status(422).json({ message: 'Form value is empty' })
+  //   }
+  // }
 
   let data,
     dataToMe = {}

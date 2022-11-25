@@ -63,6 +63,18 @@ const Popup = () => {
             onChange={e => handleInput(e)}
             value={inputValue}
           />
+          <input
+            type='comapny'
+            id='comapny'
+            name='comapny'
+            placeholder='Your Comapny'
+          />
+          <input
+            type='position'
+            id='position'
+            name='position'
+            placeholder='Your Position'
+          />
 
           <button id='submit' type='submit'>
             Submit
