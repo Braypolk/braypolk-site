@@ -55,7 +55,7 @@ export default function handler (req, res) {
 
 
       const messageToMe = `Name: ${body.name}\r\nEmail: ${body.email}\r\nPhone: ${body.phone}`
-      const personContact = `BEGIN:VCARD\r\nVERSION:2.1\r\nFN:${body.name}\r\nTEL;CELL:${body.phone}\r\nEMAIL:${body.email}\r\nEND:VCARD`
+      const personContact = `BEGIN:VCARD\r\nVERSION:2.1\r\nFN:${body.name}\r\nTEL;CELL:${body.phone}\r\nEMAIL:${body.email}\r\nORG:${body.company}\r\nORG:${body.position}\r\nEND:VCARD`
 
       dataToMe = {
         to: 'braypolk@gmail.com',
