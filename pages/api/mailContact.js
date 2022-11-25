@@ -40,7 +40,7 @@ export default function handler (req, res) {
     if (file) {
       data = {
         to: body.email,
-        from: 'brayPolkSite@bray.dev',
+        from: 'braypolk@bray.dev',
         templateId: 'd-ecb9ec5ba883434f91b1c72bd370fadf',
         attachments: [
           {
@@ -60,7 +60,7 @@ export default function handler (req, res) {
       dataToMe = {
         to: 'braypolk@gmail.com',
         subject: 'New Contact From BrayPolk Site',
-        from: 'brayPolkSite@bray.dev',
+        from: 'braypolk@bray.dev',
         text: messageToMe,
         html: messageToMe.replace(/\r\n/g, '<br/>'),
         attachments: [

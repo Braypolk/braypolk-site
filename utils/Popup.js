@@ -86,7 +86,7 @@ const Popup = () => {
         </form>
         <div id='success' style={{ marginBottom: '30px' }}>
           <h1>Thank you</h1>
-          <p>Your message has been submitted</p>
+          <p>Your contact has been submitted</p>
         </div>
       </Drawer>
     </Fragment>
