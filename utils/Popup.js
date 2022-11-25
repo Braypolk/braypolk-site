@@ -41,13 +41,29 @@ const Popup = () => {
         isVisible={isVisible}
         className='drawer'
       >
-        <form id='form' method='post' onSubmit={e => handleFormSubmit(e, "mailContact")}>
+        <form
+          id='form'
+          method='post'
+          onSubmit={e => handleFormSubmit(e, 'mailContact')}
+        >
           <input
             required
             type='text'
             id='name'
             name='name'
             placeholder='Your Name'
+          />
+          <input
+            type='text'
+            id='position'
+            name='position'
+            placeholder='Your Position'
+          />
+          <input
+            type='text'
+            id='comapny'
+            name='comapny'
+            placeholder='Your Comapny'
           />
           <input
             required
@@ -63,24 +79,12 @@ const Popup = () => {
             onChange={e => handleInput(e)}
             value={inputValue}
           />
-          <input
-            type='comapny'
-            id='comapny'
-            name='comapny'
-            placeholder='Your Comapny'
-          />
-          <input
-            type='position'
-            id='position'
-            name='position'
-            placeholder='Your Position'
-          />
 
           <button id='submit' type='submit'>
             Submit
           </button>
         </form>
-        <div id='success' style={{marginBottom: "30px"}}>
+        <div id='success' style={{ marginBottom: '30px' }}>
           <h1>Thank you</h1>
           <p>Your message has been submitted</p>
         </div>
