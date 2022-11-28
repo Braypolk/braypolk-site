@@ -51,10 +51,9 @@ export default function Home () {
           <ScrollHighlightNabbar sectionRefs={sectionRefs} />
         </div>
         <div className='downloadSection allCenter'>
-          {/* todo have file be called only when downloaded */}
-          <a href='/assets/resume.pdf' download>
+          <a href='/assets/resume.pdf' target='_blank' rel="noopener noreferrer">
             <p>
-              Download
+              View
               <br />
               Resume
             </p>
