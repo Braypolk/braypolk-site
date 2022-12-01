@@ -1,11 +1,7 @@
-import * as Y from 'yjs'
-import { WebrtcProvider } from 'y-webrtc'
-import { useEffect } from 'react'
 
-const SSR = typeof window === 'undefined'
-const ydoc = new Y.Doc()
-// const provider = new WebrtcProvider(`tutorial-tic-tac-toe`, ydoc)
-const provider = new WebrtcProvider('your-room-name', ydoc)
+import { useEffect } from 'react'
+import NoSsr from '../utils/NoSsr'
+import CRDT from '../utils/crdt'
 
 // function calculateWinner(squares) {
 //     const lines = [
@@ -145,23 +141,9 @@ function Untitled ({ Component, pageProps }) {
   //   }
 
   return (
-    <>
-      {!SSR ? (
-        <div className='game'>
-          test
-          <div className='game-board'>
-            {/* <Board
-            squares={current.squares}
-            onClick={(i) => this.handleClick(i)}
-        /> */}
-          </div>
-          <div className='game-info'>
-            {/* <div>{status}</div> */}
-            {/* <ol>{moves}</ol> */}
-          </div>
-        </div>
-      ) : null}
-    </>
+    <NoSsr>
+      <CRDT/>
+    </NoSsr>
   )
 }
 
