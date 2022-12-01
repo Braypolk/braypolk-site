@@ -51,7 +51,11 @@ export default function Home () {
           <ScrollHighlightNabbar sectionRefs={sectionRefs} />
         </div>
         <div className='downloadSection allCenter'>
-          <a href='/assets/resume.pdf' target='_blank' rel="noopener noreferrer">
+          <a
+            href='/assets/resume.pdf'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             <p>
               View
               <br />
@@ -79,6 +83,13 @@ export default function Home () {
               priority='true'
             />
           </div>
+          <Link href='/untitled' className='untitledLink'>
+            <div className='untitledHead'>
+              <h1>[untitled]</h1>
+              <h1>click here</h1>
+            </div>
+          </Link>
+
           {/* todo fix for mobile display: do a max width and then compress with smaller widths*/}
           <div className='someInfo'>
             <p className='fullstack rad'>Full-stack Developer</p>
@@ -154,7 +165,7 @@ export default function Home () {
                 id='form'
                 className='bottomPad'
                 method='post'
-                onSubmit={e => handleFormSubmit(e, "mail")}
+                onSubmit={e => handleFormSubmit(e, 'mail')}
               >
                 <input
                   required

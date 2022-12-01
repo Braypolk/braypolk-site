@@ -18,7 +18,10 @@
     "react": "18.1.0",
     "react-bottom-drawer": "^0.1.1",
     "react-dom": "18.1.0",
-    "react-spring-bottom-sheet": "^3.4.1"
+    "react-spring-bottom-sheet": "^3.4.1",
+    "y-indexeddb": "^9.0.9",
+    "y-webrtc": "^10.2.3",
+    "yjs": "^13.5.41"
   },
   "devDependencies": {
     "eslint": "8.17.0",
