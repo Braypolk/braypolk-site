@@ -528,4 +528,7 @@ form {
     padding: 20px 0;
     transform: translateX(6.5%);
   }
+  .untitledHead {
+    font-size: 30px;
+  }
 }
