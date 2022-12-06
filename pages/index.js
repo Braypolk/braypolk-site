@@ -83,10 +83,9 @@ export default function Home () {
               priority='true'
             />
           </div>
-          <Link href='/untitled' className='untitledLink'>
+          <Link href='https://untitled.bray.dev' className='untitledLink'>
             <div className='untitledHead'>
-              <h1>[untitled]</h1>
-              <h1>click here</h1>
+              <h1 className='untitledHead'>[untitled] click here</h1>
             </div>
           </Link>
 

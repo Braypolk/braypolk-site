@@ -163,71 +163,19 @@ h1, h2 {
   transition: all .6s ease;
 }
 
-.untitledHead{
-  --font: black;
-  --back: white;
-
-  background-color: var(--back);
+.untitledHead {
   position: absolute;
-  top: 55%;
+  top: 0;
+  width: 80%;
   left: 50%;
   transform: translateX(-50%);
-  /* width: 100%; */
   text-align: center;
-  padding: 10px 0;
-  background-image: linear-gradient(var(--font), var(--font)),
-  linear-gradient(var(--font), var(--font)),
-  linear-gradient(var(--font), var(--font)),
-  linear-gradient(var(--font), var(--font));
-
-  background-repeat: no-repeat;
-  background-size: 8px 8px;
-  background-position: top left, top right, bottom left, bottom right;
-
-  border: solid var(--font);
-  border-width: 0 8px;
-
-  
-  transition: all 0.2s ease;
-  -moz-transition: all 0.2s ease;
-  -webkit-transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
+  color: white;
+    font-size: 50px;
 }
 
 .untitledHead:hover {
-  --font: white;
-  --back: black;
-
   cursor: pointer;
-
-  background-color: var(--back);
-
-  background-image: linear-gradient(var(--font), var(--font)),
-  linear-gradient(var(--font), var(--font)),
-  linear-gradient(var(--font), var(--font)),
-  linear-gradient(var(--font), var(--font));
-
-  background-repeat: no-repeat;
-  background-size: 8px 8px;
-  background-position: top left, top right, bottom left, bottom right;
-
-  border: solid var(--font);
-  border-width: 0 8px;
-  transition: all 0.2s ease;
-  -moz-transition: all 0.2s ease;
-  -webkit-transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
-
-}
-
-.untitledHead h1 {
-  text-shadow: unset;
-  color: var(--font);
-  transition: all 0.2s ease;
-  -moz-transition: all 0.2s ease;
-  -webkit-transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
-
 }
 
 .someInfo {
