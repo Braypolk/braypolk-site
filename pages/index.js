@@ -83,11 +83,11 @@ export default function Home () {
               priority='true'
             />
           </div>
-          <Link href='https://untitled.bray.dev' className='untitledLink'>
+          {/* <Link href='https://untitled.bray.dev' className='untitledLink'>
             <div className='untitledHead'>
               <h1 className='untitledHead'>[untitled] click here</h1>
             </div>
-          </Link>
+          </Link> */}
 
           {/* todo fix for mobile display: do a max width and then compress with smaller widths*/}
           <div className='someInfo'>
