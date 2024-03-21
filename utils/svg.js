@@ -1,4 +1,4 @@
-const color = "#a7c7f5"
+const color = "var(--accent-700)"
 
 const DownloadButton = () => {
     return (

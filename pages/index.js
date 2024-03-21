@@ -3,14 +3,14 @@ import Head from 'next/head'
 import Link from 'next/link'
 import React, { useRef, useEffect } from 'react'
 
-import ScrollHighlightNabbar from '../utils/ScrollHighlightNavbar'
+import ScrollHighlightNabbar, { boxChange } from '../utils/ScrollHighlightNavbar'
 import handleFormSubmit from '../utils/handleFormSubmit'
 import Experience from '../utils/Experience'
 import { DownloadButton, Linkedin, Github } from '../utils/svg.js'
 
 import portrait from '../public/assets/portrait.jpg'
 
-export default function Home () {
+export default function Home() {
   const about = useRef(null)
   const experience = useRef(null)
   const contact = useRef(null)
@@ -20,20 +20,6 @@ export default function Home () {
     { section: 'Experience', ref: experience },
     { section: 'Contact', ref: contact }
   ]
-
-  const boxChange = e => {
-    const otherside = document.getElementById('otherSidebar')
-    const bigName = document.getElementById('bigFirstName')
-    if (e.target.checked) {
-      otherside.style.transform = 'translateX(' + -30 + 'vw)'
-      bigName.style.transform = 'translateY(' + 0 + 'vh'
-      document.body.classList.add('stop-scrolling')
-    } else {
-      otherside.style.transform = 'translateX(' + 30 + 'vw)'
-      bigName.style.transform = 'translateY(' + -100 + 'vh)'
-      document.body.classList.remove('stop-scrolling')
-    }
-  }
 
   return (
     <div className='app'>
@@ -123,85 +109,42 @@ export default function Home () {
           </div>
 
           <div
-            className='experience horizCenter topPad'
+            className='experience horizCenter topPad bottomPad'
             ref={experience}
             id='Experience'
           >
             <h1 className='bottomPad textCenter'>Professional Experience</h1>
             <Experience />
           </div>
-          <div className='about' ref={contact} id='Contact'>
-            <div className='allCenter spaceRight'>
-              <div className='fix'>
-                <h1>
-                  Let&apos;s
-                  <br />
-                  Connect
-                </h1>
-                <div className='social horizCenter'>
-                  <ul className='horizCenter'>
-                    <li>
-                      <a
-                        href='https://www.linkedin.com/in/braypolk/'
-                        target='blank'
-                      >
-                        <p>Linkedin</p>
-                        <Linkedin />
-                      </a>
-                    </li>
-                    <li>
-                      <a href='https://github.com/Braypolk' target='blank'>
-                        <p>Github</p>
-                        <Github />
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+          <div className='topPad' ref={contact} id='Contact'>
+            {/* <div className='fix'> */}
+            <h1>
+              Let&apos;s
+              <br />
+              Connect
+            </h1>
+            <div className='social'>
+              <ul className='horizCenter connectUl'>
+                <li className='connect'>
+                  <a
+                    href='https://www.linkedin.com/in/braypolk/'
+                    target='blank'
+                  >
+                    <p>Linkedin</p>
+                    <Linkedin />
+                  </a>
+                </li>
+                <li>
+                  <a href='https://github.com/Braypolk' target='blank'>
+                    <p>Github</p>
+                    <Github />
+                  </a>
+                </li>
+              </ul>
             </div>
-            <div className='form'>
-              <form
-                id='form'
-                className='bottomPad'
-                method='post'
-                onSubmit={e => handleFormSubmit(e, 'mail')}
-              >
-                <input
-                  required
-                  className='rad'
-                  type='text'
-                  id='name'
-                  name='name'
-                  placeholder='Name'
-                />
-                <input
-                  required
-                  className='rad'
-                  type='email'
-                  id='email'
-                  name='email'
-                  placeholder='Email'
-                />
-                <textarea
-                  required
-                  className='rad'
-                  cols='40'
-                  rows='8'
-                  id='message'
-                  name='message'
-                  placeholder='Your Message...'
-                />
-                <button className='rad horizCenter' id='submit' type='submit'>
-                  Submit
-                </button>
-              </form>
-              <div id='success'>
-                <h1>Thank you</h1>
-                <p>Your message has been submitted</p>
-              </div>
-            </div>
-            <div className='bottom'></div>
+            {/* </div> */}
           </div>
+          <div className='bottom'></div>
         </div>
       </div>
     </div>

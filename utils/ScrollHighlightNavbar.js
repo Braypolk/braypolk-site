@@ -1,5 +1,20 @@
 import React, { useRef, useEffect, useState } from "react";
 
+export const boxChange = () => {
+  const otherside = document.getElementById('otherSidebar')
+  const bigName = document.getElementById('bigFirstName')
+  const checkbox = document.getElementById('toggler')
+  if (checkbox.checked) {
+    otherside.style.transform = 'translateX(' + -30 + 'vw)'
+    bigName.style.transform = 'translateY(' + 0 + 'vh'
+    document.body.classList.add('stop-scrolling')
+  } else {
+    otherside.style.transform = 'translateX(' + 30 + 'vw)'
+    bigName.style.transform = 'translateY(' + -100 + 'vh)'
+    document.body.classList.remove('stop-scrolling')
+  }
+}
+
 const scrollTo = ele => {
   ele.scrollIntoView({
     behavior: "smooth",
@@ -47,7 +62,8 @@ function ScrollHighlightNabbar({ sectionRefs }) {
             onClick={() => {
               scrollTo(header.ref.current);
               let toggle = document.getElementById("toggler");
-              toggle.checked = !toggle.checked
+              toggle.checked = toggle.checked ? !toggle.checked: toggle.checked;
+              boxChange();
             }}
           >
             {header.section}
