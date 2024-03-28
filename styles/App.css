@@ -480,8 +480,14 @@ h1, h2 {
   padding: 15.5px 0;
   margin: 0 auto;
   border-radius: 5px;
-  background-color: var(--text-950);
-  color: white;
+  background-color: var(--background-700);
+  color: var(--text-50);
+  border: 3px solid var(--background-700);
+  transition: all 0.2s ease-in-out;
+}
+
+.connectButton:hover, #submit:hover {
+  border: 3px solid var(--accent-700);
 }
 
 #success {
