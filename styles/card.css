@@ -144,7 +144,7 @@ body {
     color: #374151;
 }
 
-#form input, button {
+/* #form input, button {
     width: 90%;
     margin: 10px auto;
     box-sizing: border-box;
@@ -157,7 +157,7 @@ body {
   cursor: pointer;
   font-size: 17px;
   border-radius: 5px;
-}
+} */
 
 #submit {
     background-color: var(--primary-600);

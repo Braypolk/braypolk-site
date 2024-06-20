@@ -1,17 +1,20 @@
 import React, { useRef, useEffect, useState } from "react";
+import Toggle from "./Toggle";
 
 export const boxChange = () => {
   const otherside = document.getElementById('otherSidebar')
   const bigName = document.getElementById('bigFirstName')
   const checkbox = document.getElementById('toggler')
-  if (checkbox.checked) {
-    otherside.style.transform = 'translateX(' + -30 + 'vw)'
-    bigName.style.transform = 'translateY(' + 0 + 'vh'
-    document.body.classList.add('stop-scrolling')
-  } else {
-    otherside.style.transform = 'translateX(' + 30 + 'vw)'
-    bigName.style.transform = 'translateY(' + -100 + 'vh)'
-    document.body.classList.remove('stop-scrolling')
+  if (window.matchMedia('(max-width: 1000px)').matches) {
+    if (checkbox.checked) {
+      otherside.style.transform = 'translateX(' + -30 + 'vw)'
+      bigName.style.transform = 'translateY(' + 0 + 'vh'
+      document.body.classList.add('stop-scrolling')
+    } else {
+      otherside.style.transform = 'translateX(' + 30 + 'vw)'
+      bigName.style.transform = 'translateY(' + -100 + 'vh)'
+      document.body.classList.remove('stop-scrolling')
+    }
   }
 }
 
@@ -30,7 +33,7 @@ function ScrollHighlightNabbar({ sectionRefs }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY ;
+      const scrollPosition = window.scrollY;
       const selected = sectionRefs.find(({ section, ref }) => {
         const ele = ref.current;
         if (ele) {
@@ -53,24 +56,37 @@ function ScrollHighlightNabbar({ sectionRefs }) {
     };
   }, [visibleSection]);
 
+
   return (
-    <ul className="navList" >
-      {sectionRefs.map((header, index) => (
-        <li key={index}>
+    <>
+
+      <ul className="navList" >
+        {/* <button id="colorSchemeToggle" onClick={toggleColorScheme}>Toggle Color Scheme</button> */}
+        {/* <li key='toggle'>
           <a
-            className={visibleSection === header.section ? "selected" : ""}
-            onClick={() => {
-              scrollTo(header.ref.current);
-              let toggle = document.getElementById("toggler");
-              toggle.checked = toggle.checked ? !toggle.checked: toggle.checked;
-              boxChange();
-            }}
+            onClick={toggleColorScheme}
           >
-            {header.section}
+            Toggle Color Scheme
           </a>
-        </li>
-      ))}
-    </ul>
+        </li> */}
+        <li><Toggle /></li>
+        {sectionRefs.map((header, index) => (
+          <li key={index}>
+            <a
+              className={visibleSection === header.section ? "selected" : ""}
+              onClick={() => {
+                scrollTo(header.ref.current);
+                let toggle = document.getElementById("toggler");
+                toggle.checked = toggle.checked ? !toggle.checked : toggle.checked;
+                boxChange();
+              }}
+            >
+              {header.section}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
 

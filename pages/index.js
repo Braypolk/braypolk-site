@@ -1,10 +1,8 @@
 import Image from 'next/image'
 import Head from 'next/head'
-import Link from 'next/link'
 import React, { useRef, useEffect, useState } from 'react'
 
 import ScrollHighlightNabbar, { boxChange } from '../utils/ScrollHighlightNavbar'
-import handleFormSubmit from '../utils/handleFormSubmit'
 import Experience from '../utils/Experience'
 import { DownloadButton, Linkedin, Github } from '../utils/svg.js'
 
@@ -14,7 +12,6 @@ export default function Home() {
   const about = useRef(null)
   const experience = useRef(null)
   const contact = useRef(null)
-  const [darkMode, setDarkMode] = useState(false);
 
   const sectionRefs = [
     { section: 'About', ref: about },
