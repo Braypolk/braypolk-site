@@ -1,11 +1,8 @@
 import { useState } from 'react'
-import { BottomSheet } from 'react-spring-bottom-sheet'
 import Image from 'next/image'
-import Head from 'next/head'
 
 import portrait from '../public/assets/portrait.jpg'
 import Popup from '../utils/Popup.js'
-// import 'react-spring-bottom-sheet/dist/style.css'
 
 export default function Card () {
   let [open, setOpen] = useState(false)
