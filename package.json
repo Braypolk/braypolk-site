@@ -12,7 +12,9 @@
     "@iconify-icon/react": "^2.1.0",
     "next": "14.2.4",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-bottom-drawer": "^0.1.1",
+    "react-dom": "18.1.0",
+    "sharp": "^0.33.4"
   },
   "devDependencies": {
     "eslint": "8.17.0",

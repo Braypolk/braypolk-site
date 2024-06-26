@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 import portrait from '../public/assets/portrait.jpg'
 import Popup from '../utils/Popup.js'
